@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-    const orders = await prisma.serviceOrder.findMany({
+    const orders = await prisma.serviceorder.findMany({
         include: {
             client: true,
             invoices: true
