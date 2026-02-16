@@ -3,7 +3,7 @@
 export const dynamic = 'force-dynamic'
 
 import { useState, useEffect } from "react"
-import { useSearchParams, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { Plus, Search, RefreshCw, Filter } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -38,7 +38,6 @@ export default function ServiceOrdersPage() {
     const [selectedOrder, setSelectedOrder] = useState<any>(null)
     const [viewMode, setViewMode] = useState<'create' | 'edit' | 'view'>('create')
 
-    const searchParams = useSearchParams()
     const router = useRouter()
 
     const fetchOrders = async () => {
@@ -66,30 +65,12 @@ export default function ServiceOrdersPage() {
         setFilteredOrders(filtered)
     }, [searchTerm, statusFilter, orders])
 
-    // Handle deep linking via URL params
-    useEffect(() => {
-        const id = searchParams.get('id')
-        const mode = searchParams.get('mode') as 'view' | 'edit' | null
-
-        if (id && orders.length > 0) {
-            const order = orders.find(o => o.id === id)
-            if (order) {
-                setSelectedOrder(order)
-                setViewMode(mode || 'view')
-                setIsDialogOpen(true)
-            }
-        }
-    }, [searchParams, orders])
-
     // Update URL when dialog closes
     const handleOpenChange = (open: boolean) => {
         setIsDialogOpen(open)
         if (!open) {
             setSelectedOrder(null)
             setViewMode('create')
-            // Remove params from URL without refresh
-            const newUrl = window.location.pathname
-            window.history.replaceState({}, '', newUrl)
         }
     }
 
