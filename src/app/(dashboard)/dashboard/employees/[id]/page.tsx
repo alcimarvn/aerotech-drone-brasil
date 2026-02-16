@@ -49,7 +49,7 @@ export default async function EmployeeDetailsPage({ params }: EmployeeDetailsPag
 
     // Calcular estatísticas
     const totalHectares = employee.expense.reduce((acc, exp) => acc + (exp.serviceorder?.areaSize || 0), 0)
-    const workCount = employee.expense.filter(exp => exp.serviceorderId).length
+    const workCount = employee.expense.filter(exp => exp.serviceOrderId).length
 
     // Total de comissões/ganhos
     const totalEarnings = employee.expense.reduce((acc, exp) => acc + exp.amount, 0)
