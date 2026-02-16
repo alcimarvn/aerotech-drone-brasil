@@ -1,8 +1,6 @@
-import { LoginForm } from "@/components/auth/login-form"
+"use client"
 
-// Disable SSR to prevent 503 timeout errors
-export const dynamic = 'force-dynamic'
-export const runtime = 'nodejs'
+import { LoginForm } from "@/components/auth/login-form"
 
 export default function LoginPage() {
     return (
