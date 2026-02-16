@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aerotech Drones - AgTech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#047756",
+                        "primary-dark": "#035e44",
+                        "background-light": "#f5f8f7",
+                        "background-dark": "#0f231d",
+                        "surface-dark": "#162e26",
+                        "accent": "#f59e0b", // Amber 500
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-nav {
+            background: rgba(15, 35, 29, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(4, 119, 86, 0.2);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #ffffff, #a7f3d0);
+        }
+        .mesh-gradient {
+            background-color: #0f231d;
+            background-image: radial-gradient(at 0% 0%, hsla(163,67%,26%,0.2) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, hsla(45,90%,50%,0.15) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-gray-100 font-display selection:bg-primary selection:text-white">
+<!-- Navbar -->
+<nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex-shrink-0 flex items-center gap-2">
+<span class="material-icons text-primary text-3xl">flight_takeoff</span>
+<span class="font-bold text-xl tracking-tight text-white">AEROTECH</span>
+</div>
+<!-- Desktop Menu (Hidden on mobile) -->
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-4">
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Início</a>
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Serviços</a>
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Frota</a>
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Compliance</a>
+<a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Contato</a>
+</div>
+</div>
+<!-- CTA Button -->
+<div class="hidden md:block">
+<a class="bg-accent hover:bg-amber-600 text-background-dark font-bold py-2 px-4 rounded-full flex items-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-amber-500/20" href="#">
+<span class="material-icons text-sm">chat</span>
+                        Orçamento via WhatsApp
+                    </a>
+</div>
+<!-- Mobile menu button -->
+<div class="-mr-2 flex md:hidden">
+<button aria-controls="mobile-menu" aria-expanded="false" class="inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-white hover:bg-primary/20 focus:outline-none" type="button">
+<span class="sr-only">Open main menu</span>
+<span class="material-icons">menu</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Menu (Mock state) -->
+<div class="hidden md:hidden bg-background-dark border-t border-primary/20" id="mobile-menu">
+<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+<a class="text-white block px-3 py-2 rounded-md text-base font-medium bg-primary/20" href="#">Início</a>
+<a class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="#">Serviços</a>
+<a class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="#">Frota</a>
+<a class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="#">Compliance</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-screen min-h-[600px] flex items-end justify-start overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Drone pulverizando plantação de soja ao pôr do sol" class="w-full h-full object-cover" data-alt="Drone flying over green agriculture field at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpMHaofQ52xCTDyyEiMXGWaIF0VI6OjXUvYLFkX5w4QQC0Y3Skl6bH3n14ZJ38HYX-FKEBS5TsgDcMtQZQLsf5Uc5YTxod9_S3jFxEVp2XMjNMugVpUkGYm-ZjWvr4N-esm_KXJvEzUobsB0GhrwVtXoQCSgUF7YZthIG-9pL4yqIP5jatt5LJiRZTztgtXOCqm2fesLa_4VsuSztyQ2HlFPQNjj293L3Xl11txEe4JJZeWQJXam4ofSH_GxpIrwUhFCnUUBEf_dE"/>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent"></div>
+<div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+</div>
+<!-- Content -->
+<div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 sm:pb-32">
+<!-- Badges -->
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white backdrop-blur-md border border-white/20">
+<span class="material-icons text-[16px] mr-1 text-primary">verified</span> Certificação CAAR
+                </span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white backdrop-blur-md border border-white/20">
+<span class="material-icons text-[16px] mr-1 text-primary">flight</span> Homologado ANAC
+                </span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white backdrop-blur-md border border-white/20">
+<span class="material-icons text-[16px] mr-1 text-primary">gavel</span> Registro MAPA
+                </span>
+</div>
+<h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-4 drop-shadow-lg leading-tight">
+                Pulverização de <br class="hidden sm:block"/>
+<span class="text-primary">Precisão</span>
+</h1>
+<p class="mt-2 max-w-lg text-lg sm:text-xl text-gray-200 mb-8 font-light">
+                Mais Produtividade, Menos Desperdício. Serviços especializados de pulverização e dispersão de sólidos no Maranhão. Tecnologia que respeita sua lavoura.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-8 rounded-xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-all" href="#">
+                    Conhecer Serviços
+                    <span class="material-icons">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Services Section (Bento Grid) -->
+<section class="py-20 px-4 sm:px-6 lg:px-8 mesh-gradient relative">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-accent text-sm font-bold uppercase tracking-wider mb-2">Nossas Soluções</h2>
+<h3 class="text-3xl md:text-4xl font-bold text-white">Tecnologia em Campo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+<!-- Card 1: Large Span -->
+<div class="relative group overflow-hidden rounded-2xl bg-surface-dark md:col-span-3 lg:col-span-2 row-span-2 border border-white/5 hover:border-primary/50 transition-colors">
+<div class="absolute inset-0">
+<img alt="Drone spraying mist over crops close up" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Close up of agricultural drone spraying liquid fertilizer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9sVjCY1CqvpVuxixTVvt5kTV-KBFtzeAWmUTuEb4ifmF4tZd8NJiW_wKoJ6q1KDMQo28zItJ4KVZnWdpGS06mijzdjcVjuXePllAJw4FOoycb3uiQuuJ8Dn6zAfD7XrXl0ooaGqTwfKmt8uDMbpZDplDrJlGdJoY0KydCEjTxD9KDVq6yZHG_iGX8w_eGlcGFD6Lfid26pyxmP_eJrs7KPUpgdco1hqtJCbl8p_le31fJmd_n_AslXzksZ3vD_KVO76SDCdwqLmM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
+</div>
+<div class="absolute bottom-0 p-8 w-full">
+<div class="inline-block p-2 rounded-lg bg-primary/20 backdrop-blur-sm mb-4">
+<span class="material-icons text-primary text-3xl">water_drop</span>
+</div>
+<h4 class="text-2xl font-bold text-white mb-2">Pulverização Líquida</h4>
+<p class="text-gray-300 max-w-md">Aplicação UBV (Ultra Baixo Volume) com precisão centimétrica. Reduza o uso de água e maximize a eficiência dos defensivos.</p>
+</div>
+</div>
+<!-- Card 2: Solids -->
+<div class="relative group overflow-hidden rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/50 transition-colors">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-dark to-primary/10"></div>
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#047756 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="relative p-6 h-full flex flex-col justify-between z-10">
+<div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+<span class="material-icons">grass</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-white mb-1">Dispersão de Sólidos</h4>
+<p class="text-sm text-gray-400">Semeadura e adubação granulada uniforme.</p>
+</div>
+</div>
+</div>
+<!-- Card 3: Mapping -->
+<div class="relative group overflow-hidden rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/50 transition-colors">
+<div class="absolute inset-0">
+<img alt="Multispectral NDVI map analysis screen" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="Digital agriculture map showing NDVI crop health data" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtsN6u1Vf43HDFRF6H3SPiUBM3_6SaRLzXHcRSg1JwqEGHiqEckUoPNi8wiOFsgY543399gIUPNlCEKcRQ3j5-iQky7rJRA6zXEsKcJsi3pOTvQnzopsPZ-BgvEERjivjet6Wfs0FbVQaiAjseiYZcAYCAFEcvk6TWCVvsloI4huFnXRGp5t0m0VtfrbCyXlrvh6tMsZLtesfwuxR3ykHMC1jEoyCd9lpolV6QawzkNnYGBrcsbURFU0j5P6ZMKUlHxrcw0vKF2JM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent"></div>
+</div>
+<div class="relative p-6 h-full flex flex-col justify-between z-10">
+<div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+<span class="material-icons">map</span>
+</div>
+<div>
+<h4 class="text-xl font-bold text-white mb-1">Mapeamento (NDVI)</h4>
+<p class="text-sm text-gray-400">Análise multiespectral para saúde da lavoura.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Aerotech Section -->
+<section class="py-20 bg-background-dark border-y border-white/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="order-2 lg:order-1">
+<h2 class="text-3xl font-bold text-white mb-6">Por que escolher a Aerotech?</h2>
+<p class="text-gray-400 mb-8">Nossa tecnologia permite operações em estágios avançados da cultura sem causar danos, garantindo a integridade do seu investimento.</p>
+<ul class="space-y-6">
+<li class="flex items-start">
+<div class="flex-shrink-0">
+<span class="material-icons text-primary text-2xl">check_circle</span>
+</div>
+<div class="ml-4">
+<h5 class="text-lg font-bold text-white">Economia de até 30% em defensivos</h5>
+<p class="text-sm text-gray-400">Aplicação direcionada e eficiente evita desperdícios.</p>
+</div>
+</li>
+<li class="flex items-start">
+<div class="flex-shrink-0">
+<span class="material-icons text-primary text-2xl">check_circle</span>
+</div>
+<div class="ml-4">
+<h5 class="text-lg font-bold text-white">Zero amassamento de cultura</h5>
+<p class="text-sm text-gray-400">Sem rastros de tratores, preservando 100% da área plantada.</p>
+</div>
+</li>
+<li class="flex items-start">
+<div class="flex-shrink-0">
+<span class="material-icons text-primary text-2xl">check_circle</span>
+</div>
+<div class="ml-4">
+<h5 class="text-lg font-bold text-white">Operação em solo úmido</h5>
+<p class="text-sm text-gray-400">Não dependa das condições do solo para tratar sua lavoura.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="order-1 lg:order-2 relative h-96 rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
+<img alt="Drone Agras T30 over corn field" class="w-full h-full object-cover" data-alt="Modern agricultural drone hovering over corn field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5mnJGFya8NJp5Nh2I-qblf7qdijyaho92MS0PRP-d0bgLCgSVE3fRf8_mWtzyvypJrWh9ZzMODLoX56iJagSFtPCIdIoMtyuotriJ1cpFhRZXxIU0dXK_tc25Lmta3KVMdmpDz7-E30FQEdYyVfeEIAA_g5nx4sQUb9U--RHJ9tNlV1oqs4DHTgCdGDy94di9LlA27l781Ks8zAXCTqxZGKWBxINLFN4Su41Qd5mVDfctUBiWSUU5MpsmFekkP_QxW_Ms4V00bqg"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark/50 to-transparent"></div>
+<!-- Floating Stat Card -->
+<div class="absolute bottom-6 right-6 bg-surface-dark/90 backdrop-blur-md p-4 rounded-lg border border-white/10 shadow-lg max-w-xs">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-full">
+<span class="material-icons text-primary">speed</span>
+</div>
+<div>
+<p class="text-xs text-gray-400 uppercase tracking-wide">Capacidade Operacional</p>
+<p class="text-white font-bold">Até 80 ha/dia por drone</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Compliance Section -->
+<section class="py-16 bg-surface-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-2xl font-bold text-white mb-2">Operação 100% Legalizada</h2>
+<p class="text-gray-400 mb-10 max-w-2xl mx-auto">Segurança jurídica e operacional para sua fazenda. Atuamos em conformidade rigorosa com os órgãos reguladores.</p>
+<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Logos represented by text/icon placeholders for this exercise since real logos require external assets -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors">
+<span class="material-icons text-3xl text-gray-300 group-hover:text-primary">agriculture</span>
+</div>
+<span class="font-bold text-gray-300 group-hover:text-white">MAPA</span>
+</div>
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors">
+<span class="material-icons text-3xl text-gray-300 group-hover:text-primary">flight_takeoff</span>
+</div>
+<span class="font-bold text-gray-300 group-hover:text-white">ANAC</span>
+</div>
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors">
+<span class="material-icons text-3xl text-gray-300 group-hover:text-primary">radar</span>
+</div>
+<span class="font-bold text-gray-300 group-hover:text-white">DECEA</span>
+</div>
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 transition-colors">
+<span class="material-icons text-3xl text-gray-300 group-hover:text-primary">engineering</span>
+</div>
+<span class="font-bold text-gray-300 group-hover:text-white">CREA</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-background-dark border-t border-white/10 pt-16 pb-24 md:pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons text-primary text-2xl">flight_takeoff</span>
+<span class="font-bold text-xl tracking-tight text-white">AEROTECH</span>
+</div>
+<p class="text-sm text-gray-400">
+                        Soluções de agricultura de precisão com drones para o produtor rural moderno.
+                    </p>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Serviços</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">Pulverização</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Semeadura</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mapeamento</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Consultoria</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Links Rápidos</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">Sobre Nós</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Certificações</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Política de Privacidade</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Contato</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li class="flex items-center gap-2">
+<span class="material-icons text-xs text-primary">phone</span>
+                            (98) 8828-1228
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-icons text-xs text-primary">email</span>
+                            contato@aerotech.com.br
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-icons text-xs text-primary">location_on</span>
+                            Balsas, Maranhão
+                        </li>
+</ul>
+<div class="flex gap-4 mt-6">
+<a class="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all text-gray-400" href="#">
+<!-- Facebook Icon mock -->
+<span class="font-bold">f</span>
+</a>
+<a class="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all text-gray-400" href="#">
+<!-- Instagram Icon mock -->
+<span class="font-bold">in</span>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-white/5 pt-8 text-center text-xs text-gray-500">
+                © 2023 Aerotech Drones AgTech. Todos os direitos reservados.
+            </div>
+</div>
+</footer>
+<!-- Fixed Mobile CTA -->
+<div class="fixed bottom-6 left-0 right-0 p-4 md:hidden z-40 flex justify-center">
+<a class="bg-accent text-background-dark font-bold py-3 px-6 rounded-full shadow-xl shadow-amber-500/30 flex items-center gap-2 w-full max-w-sm justify-center transform active:scale-95 transition-all animate-bounce-slight" href="#">
+<span class="material-icons">chat</span>
+            Orçamento via WhatsApp
+        </a>
+</div>
+</body></html>

@@ -1,0 +1,284 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model asset {
+  id            String          @id
+  type          asset_type
+  name          String
+  model         String?
+  serialNumber  String?         @unique(map: "Asset_serialNumber_key")
+  purchaseDate  DateTime?
+  purchasePrice Float?
+  status        String
+  imageUrl      String?
+  notes         String?         @db.Text
+  assetdocument assetdocument[]
+  assetimage    assetimage[]
+  fuellog       fuellog[]
+  maintenance   maintenance[]
+}
+
+model assetdocument {
+  id      String   @id
+  assetId String
+  name    String
+  url     String
+  type    String
+  date    DateTime @default(now())
+  asset   asset    @relation(fields: [assetId], references: [id], onDelete: Cascade, map: "AssetDocument_assetId_fkey")
+
+  @@index([assetId], map: "AssetDocument_assetId_fkey")
+}
+
+model assetimage {
+  id      String  @id
+  assetId String
+  url     String
+  caption String?
+  asset   asset   @relation(fields: [assetId], references: [id], onDelete: Cascade, map: "AssetImage_assetId_fkey")
+
+  @@index([assetId], map: "AssetImage_assetId_fkey")
+}
+
+model client {
+  id            String         @id
+  name          String
+  document      String?        @unique(map: "Client_document_key")
+  contactPerson String?
+  email         String?
+  phone         String?
+  address       String?
+  city          String?
+  state         String?
+  notes         String?        @db.Text
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime
+  serviceorder  serviceorder[]
+}
+
+model employee {
+  id                                              String         @id
+  userId                                          String?        @unique(map: "Employee_userId_key")
+  cpf                                             String?        @unique(map: "Employee_cpf_key")
+  position                                        String
+  remunarationType                                String
+  baseSalary                                      Float?
+  commissionRate                                  Float?
+  admissionDate                                   DateTime       @default(now())
+  active                                          Boolean        @default(true)
+  user                                            user?          @relation(fields: [userId], references: [id], map: "Employee_userId_fkey")
+  expense                                         expense[]
+  payment                                         payment[]
+  serviceorder_serviceorder_assistantIdToemployee serviceorder[] @relation("serviceorder_assistantIdToemployee")
+  serviceorder_serviceorder_pilotIdToemployee     serviceorder[] @relation("serviceorder_pilotIdToemployee")
+}
+
+model expense {
+  id              String          @id
+  categoryId      String
+  serviceOrderId  String?
+  employeeId      String?
+  description     String
+  amount          Float
+  date            DateTime        @default(now())
+  receiptUrl      String?
+  status          String          @default("PAID") // PAID, PENDING
+  dueDate         DateTime?
+  fuelLogId       String?
+  expensecategory expensecategory @relation(fields: [categoryId], references: [id], map: "Expense_categoryId_fkey")
+  employee        employee?       @relation(fields: [employeeId], references: [id], map: "Expense_employeeId_fkey")
+  serviceorder    serviceorder?   @relation(fields: [serviceOrderId], references: [id], map: "Expense_serviceOrderId_fkey")
+  fuellog         fuellog?        @relation(fields: [fuelLogId], references: [id], map: "Expense_fuelLogId_fkey")
+  payment         payment[]
+
+  @@index([categoryId], map: "Expense_categoryId_fkey")
+  @@index([employeeId], map: "Expense_employeeId_fkey")
+  @@index([serviceOrderId], map: "Expense_serviceOrderId_fkey")
+  @@index([fuelLogId], map: "Expense_fuelLogId_fkey")
+}
+
+model expensecategory {
+  id          String    @id
+  name        String    @unique(map: "ExpenseCategory_name_key")
+  description String?
+  expense     expense[]
+}
+
+model fuellog {
+  id       String    @id
+  assetId  String
+  liters   Float
+  cost     Float
+  date     DateTime  @default(now())
+  odometer Float?
+  receiptUrl String?
+  asset    asset     @relation(fields: [assetId], references: [id], map: "FuelLog_assetId_fkey")
+  expense  expense[]
+
+  @@index([assetId], map: "FuelLog_assetId_fkey")
+}
+
+model invoice {
+  id             String        @id
+  serviceOrderId String?
+  amount         Float
+  dueDate        DateTime
+  status         String
+  issuedDate     DateTime      @default(now())
+  paidDate       DateTime?
+  notes          String?
+  serviceorder   serviceorder? @relation(fields: [serviceOrderId], references: [id], map: "Invoice_serviceOrderId_fkey")
+  payment        payment[]
+
+  @@index([serviceOrderId], map: "Invoice_serviceOrderId_fkey")
+}
+
+enum MaintenanceType {
+  PREVENTIVE
+  CORRECTIVE
+  PREDICTIVE
+}
+
+enum MaintenanceStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELED
+}
+
+model maintenance {
+  id              String            @id
+  assetId         String
+  type            MaintenanceType   @default(CORRECTIVE)
+  status          MaintenanceStatus @default(COMPLETED)
+  description     String
+  cost            Float
+  date            DateTime          @default(now()) // Data de agendamento ou realização
+  completionDate  DateTime?         // Data real de conclusão
+  nextDue         DateTime?
+  currentOdometer Float?            // KM no momento da manutenção
+  currentHours    Float?            // Horas no momento da manutenção
+  frequencyKm     Float?            // Frequência em KM
+  frequencyHours  Float?            // Frequência em Horas
+  frequencyDays   Int?              // Frequência em Dias
+  asset           asset             @relation(fields: [assetId], references: [id], map: "Maintenance_assetId_fkey")
+
+  @@index([assetId], map: "Maintenance_assetId_fkey")
+}
+
+model payment {
+  id         String    @id
+  invoiceId  String?
+  employeeId String?
+  expenseId  String?
+  amount     Float
+  method     String
+  date       DateTime  @default(now())
+  type       String
+  reference  String?
+  receiptUrl String?
+  employee   employee? @relation(fields: [employeeId], references: [id], map: "Payment_employeeId_fkey")
+  invoice    invoice?  @relation(fields: [invoiceId], references: [id], map: "Payment_invoiceId_fkey")
+  expense    expense?  @relation(fields: [expenseId], references: [id], map: "Payment_expenseId_fkey")
+
+  @@index([employeeId], map: "Payment_employeeId_fkey")
+  @@index([invoiceId], map: "Payment_invoiceId_fkey")
+  @@index([expenseId], map: "Payment_expenseId_fkey")
+}
+
+model serviceorder {
+  id                                          String                   @id
+  clientId                                    String
+  serviceType                                 serviceorder_serviceType
+  areaSize                                    Float
+  applicationRate                             Float?
+  pricePerHa                                  Float
+  totalPrice                                  Float
+  status                                      serviceorder_status      @default(NEW)
+  scheduledDate                               DateTime?
+  startDate                                   DateTime?
+  endDate                                     DateTime?
+  description                                 String?                  @db.Text
+  location                                    String?
+  createdAt                                   DateTime                 @default(now())
+  updatedAt                                   DateTime
+  assistantId                                 String?
+  pilotId                                     String?
+  expense                                     expense[]
+  invoice                                     invoice[]
+  employee_serviceorder_assistantIdToemployee employee?                @relation("serviceorder_assistantIdToemployee", fields: [assistantId], references: [id], map: "ServiceOrder_assistantId_fkey")
+  client                                      client                   @relation(fields: [clientId], references: [id], map: "ServiceOrder_clientId_fkey")
+  employee_serviceorder_pilotIdToemployee     employee?                @relation("serviceorder_pilotIdToemployee", fields: [pilotId], references: [id], map: "ServiceOrder_pilotId_fkey")
+  trip                                        trip[]
+
+  @@index([assistantId], map: "ServiceOrder_assistantId_fkey")
+  @@index([clientId], map: "ServiceOrder_clientId_fkey")
+  @@index([pilotId], map: "ServiceOrder_pilotId_fkey")
+}
+
+model trip {
+  id             String        @id
+  serviceOrderId String?
+  origin         String
+  destination    String
+  distanceKm     Float
+  date           DateTime      @default(now())
+  serviceorder   serviceorder? @relation(fields: [serviceOrderId], references: [id], map: "Trip_serviceOrderId_fkey")
+
+  @@index([serviceOrderId], map: "Trip_serviceOrderId_fkey")
+}
+
+model user {
+  id        String    @id
+  name      String?
+  email     String    @unique(map: "User_email_key")
+  password  String
+  role      user_role @default(OPERATOR)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  employee  employee?
+}
+
+enum asset_type {
+  DRONE
+  VEHICLE
+  TRAILER
+  BATTERY
+  GENERATOR
+  CONTROL
+  OTHER
+}
+
+enum serviceorder_serviceType {
+  PULVERIZATION
+  DISPERSION
+}
+
+enum user_role {
+  ADMIN
+  OPERATOR
+  FINANCIAL
+  TECHNICAL
+}
+
+enum serviceorder_status {
+  NEW
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  BILLED
+  CANCELLED
+}
+
+model companysettings {
+  id          String   @id @default(cuid())
+  companyName String   @default("Aerotech Drone Brasil")
+  cnpj        String   @default("00.000.000/0001-00")
+  theme       String   @default("system")
+  updatedAt   DateTime @updatedAt
+}

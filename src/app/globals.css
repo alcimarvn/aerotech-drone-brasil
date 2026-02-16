@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* PROFESSIONAL RESET: Light Mode Default (Agro Theme) */
+
+    /* Backgrounds: Clean/White */
+    --background: 0 0% 100%;
+    /* White */
+    --foreground: 222.2 84% 4.9%;
+    /* Slate 950 */
+
+    /* Card: White with shadow */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary: Agro Green (From Logo) */
+    --primary: 132 48% 22%;
+    /* #1e5428 */
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: Lime Tech (Accent from Logo) */
+    --secondary: 88 50% 42%;
+    /* #5da035 */
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted: Soft Grays */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent: Sky Blue for trust details */
+    --accent: 199 89% 48%;
+    /* #0ea5e9 */
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 132 48% 22%;
+    /* Ring matches Primary */
+
+    /* Radius: Standards (Softness) */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body), sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-tight text-slate-900;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grid-slate-100 {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(241 245 249)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+
+  @media print {
+    @page {
+      margin: 1cm;
+      size: A4;
+    }
+
+    body {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      background: white !important;
+      font-size: 12px;
+    }
+
+    /* Hide non-printable elements */
+    .print\:hidden {
+      display: none !important;
+    }
+
+    /* Adjust Card and Table for print */
+    .card,
+    .border,
+    .shadow {
+      box-shadow: none !important;
+      border: none !important;
+    }
+
+    table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+      font-size: 11px !important;
+    }
+
+    th,
+    td {
+      border: 1px solid #e2e8f0 !important;
+      padding: 6px !important;
+    }
+
+    /* Colors for Totals */
+    .bg-emerald-50 {
+      background-color: #ecfdf5 !important;
+      border: 1px solid #d1fae5 !important;
+    }
+
+    .bg-rose-50 {
+      background-color: #fff1f2 !important;
+      border: 1px solid #ffe4e6 !important;
+    }
+
+    .bg-slate-50 {
+      background-color: #f8fafc !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+
+    /* Ensure grids work */
+    .print\:grid-cols-3 {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 1rem !important;
+    }
+
+    /* Avoid breaking inside rows */
+    tr,
+    .card-content {
+      break-inside: avoid;
+    }
+  }
+}
