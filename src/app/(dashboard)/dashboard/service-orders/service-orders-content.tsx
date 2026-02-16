@@ -26,7 +26,7 @@ import { OSForm } from "@/components/dashboard/service-orders/os-form"
 import { OSDetails } from "@/components/dashboard/service-orders/os-details"
 import type { serviceorder_status } from "@prisma/client"
 
-export default function ServiceOrdersPage() {
+export default function ServiceOrdersContent() {
     const [orders, setOrders] = useState<any[]>([])
     const [filteredOrders, setFilteredOrders] = useState<any[]>([])
     const [isLoading, setIsLoading] = useState(true)
@@ -104,7 +104,7 @@ export default function ServiceOrdersPage() {
     const handleDelete = async (id: string) => {
         const result = await deleteServiceOrder(id)
         if (result.success) {
-            toast.success("Ordem de Servi+∫o exclu+°da com sucesso!")
+            toast.success("Ordem de Servi√ßo exclu√≠da com sucesso!")
             fetchOrders()
         } else {
             toast.error(result.error)
@@ -133,8 +133,8 @@ export default function ServiceOrdersPage() {
         <div className="space-y-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-heading font-bold text-slate-900">Ordens de Servi+∫o</h1>
-                    <p className="text-slate-500">Acompanhe e gerencie as aplica+∫+¡es em campo.</p>
+                    <h1 className="text-3xl font-heading font-bold text-slate-900">Ordens de Servi√ßo</h1>
+                    <p className="text-slate-500">Acompanhe e gerencie as aplica√ß√µes em campo.</p>
                 </div>
 
                 <Dialog open={isDialogOpen} onOpenChange={handleOpenChange}>
@@ -152,15 +152,15 @@ export default function ServiceOrdersPage() {
                     <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
                             <DialogTitle>
-                                {viewMode === 'view' ? "Detalhes da Ordem de Servi+∫o" :
-                                    viewMode === 'edit' ? "Editar Ordem de Servi+∫o" : "Nova Ordem de Servi+∫o"}
+                                {viewMode === 'view' ? "Detalhes da Ordem de Servi√ßo" :
+                                    viewMode === 'edit' ? "Editar Ordem de Servi√ßo" : "Nova Ordem de Servi√ßo"}
                             </DialogTitle>
                             <DialogDescription>
                                 {viewMode === 'view'
-                                    ? "Visualizando informa+∫+¡es completas da OS."
+                                    ? "Visualizando informa√ß√µes completas da OS."
                                     : viewMode === 'edit'
-                                        ? "Atualize as informa+∫+¡es da ordem de servi+∫o existente."
-                                        : "Registre uma nova demanda de pulveriza+∫+˙o ou dispers+˙o."}
+                                        ? "Atualize as informa√ß√µes da ordem de servi√ßo existente."
+                                        : "Registre uma nova demanda de pulveriza√ß√£o ou dispers√£o."}
                             </DialogDescription>
                         </DialogHeader>
 
@@ -181,7 +181,7 @@ export default function ServiceOrdersPage() {
                 <div className="relative flex-1 w-full">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <Input
-                        placeholder="Buscar por cliente ou localiza+∫+˙o..."
+                        placeholder="Buscar por cliente ou localiza√ß√£o..."
                         className="pl-10 h-10 border-slate-200"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
@@ -198,8 +198,8 @@ export default function ServiceOrdersPage() {
                         <option value="ALL">Todos os Status</option>
                         <option value="NEW">Novas</option>
                         <option value="SCHEDULED">Agendadas</option>
-                        <option value="IN_PROGRESS">Em Execu+∫+˙o</option>
-                        <option value="COMPLETED">Conclu+°das</option>
+                        <option value="IN_PROGRESS">Em Execu√ß√£o</option>
+                        <option value="COMPLETED">Conclu√≠das</option>
                         <option value="CANCELLED">Canceladas</option>
                     </select>
 
@@ -212,7 +212,7 @@ export default function ServiceOrdersPage() {
             {isLoading ? (
                 <div className="flex flex-col items-center justify-center py-20 text-slate-400 gap-4">
                     <RefreshCw className="w-10 h-10 animate-spin" />
-                    <p>Carregando ordens de servi+∫o...</p>
+                    <p>Carregando ordens de servi√ßo...</p>
                 </div>
             ) : (
                 <OSTable

@@ -387,3 +387,6 @@ The width(-1) and height(-1) of chart should be greater than 0,
 [1m[33mwarn[39m[22m - The class `ease-[cubic-bezier(0.23,1,0.32,1)]` is ambiguous and matches multiple utilities.
 [1m[33mwarn[39m[22m - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.23,1,0.32,1)&rsqb;` to silence this warning.
  GET /api/auth/session 200 in 204ms (compile: 109ms, render: 95ms)
+⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /dashboard/clients 200 in 370ms (compile: 203ms, proxy.ts: 59ms, render: 108ms)
+ GET /dashboard/clients 200 in 60ms (compile: 4ms, proxy.ts: 7ms, render: 49ms)
