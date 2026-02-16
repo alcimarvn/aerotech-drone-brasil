@@ -146,7 +146,7 @@ export default async function DashboardPage() {
                 {/* Left Column (Main Data) */}
                 <div className="lg:col-span-2 space-y-6">
                     {/* Charts Section */}
-                    <DashboardCharts data={performanceData} />
+                    <DashboardCharts data={performanceData || []} />
 
                     {/* Recent Activities */}
                     <Card className="border-slate-200/60 shadow-sm overflow-hidden flex flex-col">
