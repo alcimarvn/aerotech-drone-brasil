@@ -6,28 +6,36 @@ async function main() {
     // 1. Get or create a client
     const client = await prisma.client.findFirst() || await prisma.client.create({
         data: {
+            id: crypto.randomUUID(),
             name: "Cliente Teste Debug",
             email: "teste@debug.com",
-            phone: "11999999999"
+            phone: "11999999999",
+            updatedAt: new Date()
         }
     })
 
     // 2. Create Service Order
-    const os = await prisma.serviceOrder.create({
+    const os = await prisma.serviceorder.create({
         data: {
+            id: crypto.randomUUID(),
             clientId: client.id,
             serviceType: "PULVERIZATION",
             areaSize: 100,
+            pricePerHa: 50,
             totalPrice: 5000,
             status: "COMPLETED", // IMPORTANT
             scheduledDate: new Date(),
-            location: "Área de Teste"
+            updatedAt: new Date(),
+            origin: "Local",
+            destination: "Campo", // Adding required fields based on probable schema needs or just base ones
+            distanceKm: 0
         }
     })
 
     // 3. Create Invoice
     await prisma.invoice.create({
         data: {
+            id: crypto.randomUUID(),
             serviceOrderId: os.id,
             amount: 5000,
             status: "PENDING", // IMPORTANT
