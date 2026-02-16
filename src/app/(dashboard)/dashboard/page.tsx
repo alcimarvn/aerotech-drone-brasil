@@ -22,32 +22,44 @@ import { getNextServiceOrderWeather } from "@/app/actions/dashboard"
 import { WeatherWidget } from "@/components/dashboard/weather-widget"
 
 export default async function DashboardPage() {
-    // Use Promise.allSettled to prevent one failing query from breaking the entire page
-    const [statsResult, activitiesResult, performanceResult, agendaResult, weatherResult] = await Promise.allSettled([
+    // Load only essential data first to prevent timeout
+    const [statsResult, activitiesResult] = await Promise.allSettled([
         getDashboardStats(),
-        getRecentActivities(),
-        getMonthlyPerformance(),
-        getUpcomingAgenda(),
-        getNextServiceOrderWeather()
+        getRecentActivities()
     ])
 
     const statsData = statsResult.status === 'fulfilled' ? statsResult.value : null
     const activities = activitiesResult.status === 'fulfilled' ? activitiesResult.value : []
-    const performanceData = performanceResult.status === 'fulfilled' ? performanceResult.value : null
-    const upcomingAgendaData = agendaResult.status === 'fulfilled' ? agendaResult.value : []
-    const weatherData = weatherResult.status === 'fulfilled' ? weatherResult.value : null
+
+    // Load optional data with fallbacks
+    let performanceData = null
+    let upcomingAgendaData: any[] = []
+    let weatherData = null
+
+    try {
+        const [perfResult, agendaResult, weatherResult] = await Promise.allSettled([
+            getMonthlyPerformance(),
+            getUpcomingAgenda(),
+            getNextServiceOrderWeather()
+        ])
+
+        performanceData = perfResult.status === 'fulfilled' ? perfResult.value : null
+        upcomingAgendaData = agendaResult.status === 'fulfilled' ? agendaResult.value : []
+        weatherData = weatherResult.status === 'fulfilled' ? weatherResult.value : null
+    } catch (error) {
+        console.error('Error loading optional dashboard data:', error)
+    }
 
     // Fix type mismatch: ensure date is Date object
     const upcomingAgenda = upcomingAgendaData.map(item => ({
         ...item,
-        date: item.date ? new Date(item.date) : new Date(), // Fallback for null dates
-        // Maps backend enums to string for frontend interface compatibility
+        date: item.date ? new Date(item.date) : new Date(),
         status: item.status as string,
         serviceType: item.serviceType as string
     }))
 
     if (!statsData) {
-        return <div className="p-8 text-center text-slate-500">Erro ao carregar dados do dashboard.</div>
+        return <div className="p-8 text-center text-slate-500">Carregando dados do dashboard...</div>
     }
 
     const stats = [
