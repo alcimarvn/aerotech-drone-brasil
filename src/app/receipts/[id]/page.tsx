@@ -69,14 +69,14 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
                         {isIncome ? (
                             <>
                                 <p>
-                                    Recebemos de <strong className="uppercase">{payment.invoice?.serviceOrder?.client?.name || "CLIENTE NÃO IDENTIFICADO"}</strong>
+                                    Recebemos de <strong className="uppercase">{payment.invoice?.serviceorder?.client?.name || "CLIENTE NÃO IDENTIFICADO"}</strong>
                                 </p>
                                 <p>
                                     a importância de <strong>{formatCurrency(payment.amount)}</strong>
                                 </p>
                                 <p>
-                                    referente ao serviço de <strong>{payment.invoice?.serviceOrder?.serviceType === "PULVERIZATION" ? "PULVERIZAÇÃO" : "DISPERSÃO"}</strong>
-                                    {payment.invoice?.serviceOrder?.areaSize && ` (${payment.invoice.serviceOrder.areaSize} hectares)`}.
+                                    referente ao serviço de <strong>{payment.invoice?.serviceorder?.serviceType === "PULVERIZATION" ? "PULVERIZAÇÃO" : "DISPERSÃO"}</strong>
+                                    {payment.invoice?.serviceorder?.areaSize && ` (${payment.invoice.serviceorder.areaSize} hectares)`}.
                                 </p>
                             </>
                         ) : (
@@ -123,7 +123,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ id: st
                     <div className="text-center">
                         <div className="border-t border-slate-300 w-full mb-2"></div>
                         <p className="text-xs uppercase text-slate-500 font-semibold">
-                            {isIncome ? (payment.invoice?.serviceOrder?.client?.name || "Cliente") : (payment.employee?.user?.name || "Beneficiário")}
+                            {isIncome ? (payment.invoice?.serviceorder?.client?.name || "Cliente") : (payment.employee?.user?.name || "Beneficiário")}
                         </p>
                     </div>
                 </div>

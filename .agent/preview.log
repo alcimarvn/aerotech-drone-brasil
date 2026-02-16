@@ -366,3 +366,14 @@ The width(-1) and height(-1) of chart should be greater than 0,
  POST /dashboard/clients 200 in 176ms (compile: 14ms, proxy.ts: 31ms, render: 131ms)
  GET /api/auth/session 200 in 1812ms (compile: 1721ms, render: 91ms)
  GET /api/auth/session 200 in 254ms (compile: 97ms, render: 156ms)
+ GET /api/auth/session 200 in 88ms (compile: 40ms, render: 48ms)
+
+[1m[33mwarn[39m[22m - The class `duration-[10s]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `duration-&lsqb;10s&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `duration-[20s]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `duration-&lsqb;20s&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `ease-[cubic-bezier(0.23,1,0.32,1)]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.23,1,0.32,1)&rsqb;` to silence this warning.
+✓ Compiled in 1773ms
