@@ -23,15 +23,17 @@ import { db } from './src/lib/db';
             status: "SCHEDULED" // This might be ignored by createServiceOrder but let's try
         });
 
-        if (result.success) {
+
+        if (result.success && result.data) {
             console.log("Creation successful, ID:", result.data.id);
             const created = await db.serviceorder.findUnique({
                 where: { id: result.data.id }
             });
-            console.log("Fetched created order:", JSON.stringify(created, null, 2));
+            console.log("Fetched from DB:", created);
         } else {
             console.error("Creation failed:", result.error);
         }
+
 
     } catch (e) {
         console.error(e);
