@@ -10,10 +10,12 @@ async function main() {
         where: { email: 'admin@aerotech.com.br' },
         update: {},
         create: {
+            id: crypto.randomUUID(),
             email: 'admin@aerotech.com.br',
             name: 'Administrador Aerotech',
             password,
             role: 'ADMIN',
+            updatedAt: new Date()
         },
     })
 
