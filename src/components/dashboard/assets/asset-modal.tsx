@@ -6,7 +6,7 @@ import * as z from "zod"
 import { Loader2, Plus, PenSquare, Package, X, FileIcon, ImageIcon, Upload } from "lucide-react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
-import type { AssetType } from "@prisma/client"
+import type { asset_type } from "@prisma/client"
 import { format } from "date-fns"
 
 import { Button } from "@/components/ui/button"
