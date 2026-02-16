@@ -16,8 +16,10 @@ async function main() {
         console.log("Attempting dummy client creation...")
         const dummy = await prisma.client.create({
             data: {
+                id: crypto.randomUUID(),
                 name: "Debug Test",
-                email: "debug@test.com"
+                email: "debug@test.com",
+                updatedAt: new Date()
             }
         })
         console.log("Dummy creation successful:", dummy.id)
