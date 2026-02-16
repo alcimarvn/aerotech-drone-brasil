@@ -1,5 +1,9 @@
 import { LoginForm } from "@/components/auth/login-form"
 
+// Disable SSR to prevent 503 timeout errors
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export default function LoginPage() {
     return (
         <div className="min-h-screen w-full flex items-center justify-center bg-slate-50 relative overflow-hidden">
