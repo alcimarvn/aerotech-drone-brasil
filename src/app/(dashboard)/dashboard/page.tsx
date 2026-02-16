@@ -22,10 +22,20 @@ import { getNextServiceOrderWeather } from "@/app/actions/dashboard"
 import { WeatherWidget } from "@/components/dashboard/weather-widget"
 
 export default async function DashboardPage() {
-    const statsData = await getDashboardStats()
-    const activities = await getRecentActivities()
-    const performanceData = await getMonthlyPerformance()
-    const upcomingAgendaData = await getUpcomingAgenda()
+    // Use Promise.allSettled to prevent one failing query from breaking the entire page
+    const [statsResult, activitiesResult, performanceResult, agendaResult, weatherResult] = await Promise.allSettled([
+        getDashboardStats(),
+        getRecentActivities(),
+        getMonthlyPerformance(),
+        getUpcomingAgenda(),
+        getNextServiceOrderWeather()
+    ])
+
+    const statsData = statsResult.status === 'fulfilled' ? statsResult.value : null
+    const activities = activitiesResult.status === 'fulfilled' ? activitiesResult.value : []
+    const performanceData = performanceResult.status === 'fulfilled' ? performanceResult.value : null
+    const upcomingAgendaData = agendaResult.status === 'fulfilled' ? agendaResult.value : []
+    const weatherData = weatherResult.status === 'fulfilled' ? weatherResult.value : null
 
     // Fix type mismatch: ensure date is Date object
     const upcomingAgenda = upcomingAgendaData.map(item => ({
@@ -35,9 +45,6 @@ export default async function DashboardPage() {
         status: item.status as string,
         serviceType: item.serviceType as string
     }))
-
-    const weatherData = await getNextServiceOrderWeather()
-
 
     if (!statsData) {
         return <div className="p-8 text-center text-slate-500">Erro ao carregar dados do dashboard.</div>
