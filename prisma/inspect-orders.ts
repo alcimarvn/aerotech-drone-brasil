@@ -6,7 +6,7 @@ async function main() {
     const orders = await prisma.serviceorder.findMany({
         include: {
             client: true,
-            invoices: true
+            invoice: true
         },
         orderBy: { createdAt: 'desc' }
     })
@@ -15,8 +15,8 @@ async function main() {
     orders.forEach(os => {
         console.log(`OS #${os.id.slice(-6)} | Status: ${os.status}`)
         console.log(`   Client: ${os.client.name}`)
-        console.log(`   Invoices: ${os.invoices.length}`)
-        os.invoices.forEach(inv => {
+        console.log(`   Invoices: ${os.invoice.length}`)
+        os.invoice.forEach(inv => {
             console.log(`      Inv #${inv.id.slice(-6)} | Status: ${inv.status} | Amount: ${inv.amount}`)
         })
         console.log("---")
