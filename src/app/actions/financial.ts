@@ -612,3 +612,36 @@ export async function getFinancialReport(type: "CASH_FLOW" | "BY_CLIENT" | "BY_C
         return []
     }
 }
+
+export async function getPaymentById(id: string) {
+    try {
+        const payment = await db.payment.findUnique({
+            where: { id },
+            include: {
+                invoice: {
+                    include: {
+                        serviceorder: {
+                            include: {
+                                client: true
+                            }
+                        }
+                    }
+                },
+                employee: {
+                    include: {
+                        user: true
+                    }
+                },
+                expense: {
+                    include: {
+                        expensecategory: true
+                    }
+                }
+            }
+        })
+        return payment
+    } catch (error) {
+        console.error("Error fetching payment:", error)
+        return null
+    }
+}
