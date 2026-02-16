@@ -38,10 +38,9 @@ async function main() {
     console.log(`Date: ${latestFuelLog.date.toISOString()}`)
     console.log(`Has Expense Linked? ${latestFuelLog.expense && latestFuelLog.expense.length > 0 ? "YES" : "NO"}`)
 
-    /* 
-   FALLBACK TO RAW SQL 
-   To prove if the column exists in the DB and if the DATA is there.
-  */
+
+    // FALLBACK TO RAW SQL 
+    // To prove if the column exists in the DB and if the DATA is there.
     try {
         const expensesRaw: any = await db.$queryRaw`SELECT * FROM expense WHERE description LIKE '%Abastecimento%' ORDER BY date DESC LIMIT 1`
         console.log("\n--- RAW SQL EXPENSE ---")
@@ -85,7 +84,7 @@ async function main() {
     } else {
         console.log("\n[CRITICAL] No Expense found with fuelLogId = " + latestFuelLog.id)
     }
-   */
+
 
 }
 
