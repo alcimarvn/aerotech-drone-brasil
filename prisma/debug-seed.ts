@@ -23,12 +23,10 @@ async function main() {
             areaSize: 100,
             pricePerHa: 50,
             totalPrice: 5000,
-            status: "COMPLETED", // IMPORTANT
+            status: "COMPLETED",
             scheduledDate: new Date(),
             updatedAt: new Date(),
-            origin: "Local",
-            destination: "Campo", // Adding required fields based on probable schema needs or just base ones
-            distanceKm: 0
+            location: "Área de Teste"
         }
     })
 
