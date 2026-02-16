@@ -21,29 +21,37 @@ export const authOptions: NextAuthOptions = {
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials) {
-                if (!credentials?.email || !credentials?.password) {
+                try {
+                    if (!credentials?.email || !credentials?.password) {
+                        console.error('Missing credentials')
+                        return null
+                    }
+
+                    const user = await db.user.findUnique({
+                        where: { email: credentials.email }
+                    })
+
+                    if (!user) {
+                        console.error('User not found:', credentials.email)
+                        return null
+                    }
+
+                    const isPasswordValid = await compare(credentials.password, user.password)
+
+                    if (!isPasswordValid) {
+                        console.error('Invalid password for user:', credentials.email)
+                        return null
+                    }
+
+                    return {
+                        id: user.id,
+                        email: user.email,
+                        name: user.name,
+                        role: user.role,
+                    }
+                } catch (error) {
+                    console.error('Auth error:', error)
                     return null
-                }
-
-                const user = await db.user.findUnique({
-                    where: { email: credentials.email }
-                })
-
-                if (!user) {
-                    return null
-                }
-
-                const isPasswordValid = await compare(credentials.password, user.password)
-
-                if (!isPasswordValid) {
-                    return null
-                }
-
-                return {
-                    id: user.id,
-                    email: user.email,
-                    name: user.name,
-                    role: user.role,
                 }
             }
         })
