@@ -14,7 +14,10 @@ async function main() {
   */
     const allLogs = await db.fuellog.findMany({
         where: { date: { gte: new Date("2026-01-01") } },
-        orderBy: { date: "desc" }
+        orderBy: { date: "desc" },
+        include: {
+            expense: true // Added include for expense relation
+        }
     })
 
     console.log(`Found ${allLogs.length} logs in 2026:`)
