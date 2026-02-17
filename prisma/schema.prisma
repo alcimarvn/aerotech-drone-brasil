@@ -88,13 +88,13 @@ model expense {
   amount          Float
   date            DateTime        @default(now())
   receiptUrl      String?
-  status          String          @default("PAID") // PAID, PENDING
   dueDate         DateTime?
+  status          String          @default("PAID")
   fuelLogId       String?
   expensecategory expensecategory @relation(fields: [categoryId], references: [id], map: "Expense_categoryId_fkey")
   employee        employee?       @relation(fields: [employeeId], references: [id], map: "Expense_employeeId_fkey")
-  serviceorder    serviceorder?   @relation(fields: [serviceOrderId], references: [id], map: "Expense_serviceOrderId_fkey")
   fuellog         fuellog?        @relation(fields: [fuelLogId], references: [id], map: "Expense_fuelLogId_fkey")
+  serviceorder    serviceorder?   @relation(fields: [serviceOrderId], references: [id], map: "Expense_serviceOrderId_fkey")
   payment         payment[]
 
   @@index([categoryId], map: "Expense_categoryId_fkey")
@@ -111,15 +111,15 @@ model expensecategory {
 }
 
 model fuellog {
-  id       String    @id
-  assetId  String
-  liters   Float
-  cost     Float
-  date     DateTime  @default(now())
-  odometer Float?
+  id         String    @id
+  assetId    String
+  liters     Float
+  cost       Float
+  date       DateTime  @default(now())
+  odometer   Float?
   receiptUrl String?
-  asset    asset     @relation(fields: [assetId], references: [id], map: "FuelLog_assetId_fkey")
-  expense  expense[]
+  expense    expense[]
+  asset      asset     @relation(fields: [assetId], references: [id], map: "FuelLog_assetId_fkey")
 
   @@index([assetId], map: "FuelLog_assetId_fkey")
 }
@@ -139,33 +139,21 @@ model invoice {
   @@index([serviceOrderId], map: "Invoice_serviceOrderId_fkey")
 }
 
-enum MaintenanceType {
-  PREVENTIVE
-  CORRECTIVE
-  PREDICTIVE
-}
-
-enum MaintenanceStatus {
-  SCHEDULED
-  COMPLETED
-  CANCELED
-}
-
 model maintenance {
   id              String            @id
   assetId         String
-  type            MaintenanceType   @default(CORRECTIVE)
-  status          MaintenanceStatus @default(COMPLETED)
   description     String
   cost            Float
-  date            DateTime          @default(now()) // Data de agendamento ou realização
-  completionDate  DateTime?         // Data real de conclusão
+  date            DateTime          @default(now())
   nextDue         DateTime?
-  currentOdometer Float?            // KM no momento da manutenção
-  currentHours    Float?            // Horas no momento da manutenção
-  frequencyKm     Float?            // Frequência em KM
-  frequencyHours  Float?            // Frequência em Horas
-  frequencyDays   Int?              // Frequência em Dias
+  completionDate  DateTime?
+  currentHours    Float?
+  currentOdometer Float?
+  frequencyDays   Int?
+  frequencyHours  Float?
+  frequencyKm     Float?
+  status          MaintenanceStatus @default(COMPLETED)
+  type            MaintenanceType   @default(CORRECTIVE)
   asset           asset             @relation(fields: [assetId], references: [id], map: "Maintenance_assetId_fkey")
 
   @@index([assetId], map: "Maintenance_assetId_fkey")
@@ -175,16 +163,16 @@ model payment {
   id         String    @id
   invoiceId  String?
   employeeId String?
-  expenseId  String?
   amount     Float
   method     String
   date       DateTime  @default(now())
   type       String
   reference  String?
   receiptUrl String?
+  expenseId  String?
   employee   employee? @relation(fields: [employeeId], references: [id], map: "Payment_employeeId_fkey")
-  invoice    invoice?  @relation(fields: [invoiceId], references: [id], map: "Payment_invoiceId_fkey")
   expense    expense?  @relation(fields: [expenseId], references: [id], map: "Payment_expenseId_fkey")
+  invoice    invoice?  @relation(fields: [invoiceId], references: [id], map: "Payment_invoiceId_fkey")
 
   @@index([employeeId], map: "Payment_employeeId_fkey")
   @@index([invoiceId], map: "Payment_invoiceId_fkey")
@@ -244,6 +232,26 @@ model user {
   employee  employee?
 }
 
+model companysettings {
+  id          String   @id @default(cuid())
+  companyName String   @default("Aerotech Drone Brasil")
+  cnpj        String   @default("00.000.000/0001-00")
+  theme       String   @default("system")
+  updatedAt   DateTime @updatedAt
+}
+
+enum MaintenanceType {
+  PREVENTIVE
+  CORRECTIVE
+  PREDICTIVE
+}
+
+enum MaintenanceStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELED
+}
+
 enum asset_type {
   DRONE
   VEHICLE
@@ -273,12 +281,4 @@ enum serviceorder_status {
   COMPLETED
   BILLED
   CANCELLED
-}
-
-model companysettings {
-  id          String   @id @default(cuid())
-  companyName String   @default("Aerotech Drone Brasil")
-  cnpj        String   @default("00.000.000/0001-00")
-  theme       String   @default("system")
-  updatedAt   DateTime @updatedAt
 }
