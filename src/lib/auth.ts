@@ -22,8 +22,10 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials) {
                 try {
+                    console.log('🔐 [Auth] Tentativa de autorização para:', credentials?.email)
+
                     if (!credentials?.email || !credentials?.password) {
-                        console.error('Missing credentials')
+                        console.error('❌ [Auth] Credenciais ausentes')
                         return null
                     }
 
@@ -32,17 +34,20 @@ export const authOptions: NextAuthOptions = {
                     })
 
                     if (!user) {
-                        console.error('User not found:', credentials.email)
+                        console.error('❌ [Auth] Usuário não encontrado no banco:', credentials.email)
                         return null
                     }
+
+                    console.log('👤 [Auth] Usuário encontrado:', user.email, '| Role:', user.role)
 
                     const isPasswordValid = await compare(credentials.password, user.password)
 
                     if (!isPasswordValid) {
-                        console.error('Invalid password for user:', credentials.email)
+                        console.error('❌ [Auth] Senha incorreta para o usuário:', credentials.email)
                         return null
                     }
 
+                    console.log('✅ [Auth] Autenticação validada com sucesso!')
                     return {
                         id: user.id,
                         email: user.email,
@@ -50,7 +55,7 @@ export const authOptions: NextAuthOptions = {
                         role: user.role,
                     }
                 } catch (error) {
-                    console.error('Auth error:', error)
+                    console.error('💥 [Auth] Erro crítico no authorize callback:', error)
                     return null
                 }
             }

@@ -35,27 +35,35 @@ export function LoginForm() {
     })
 
     async function onSubmit(values: LoginValues) {
-        setIsLoading(true)
-        setError(null)
+        setIsLoading(true);
+        setError(null);
+        console.log("🔐 Tentativa de login iniciada para:", values.email);
 
         try {
             const result = await signIn("credentials", {
                 email: values.email,
                 password: values.password,
                 redirect: false,
-            })
+            });
+
+            console.log("📥 Resultado do NextAuth:", result);
 
             if (result?.error) {
-                setError("E-mail ou senha incorretos. Tente novamente.")
-                return
+                console.error("❌ Erro retornado pelo NextAuth:", result.error);
+                setError("E-mail ou senha incorretos. Tente novamente.");
+                return;
             }
 
-            router.push("/dashboard")
-            router.refresh()
+            if (result?.ok) {
+                console.log("✅ Autenticação bem-sucedida, redirecionando para /dashboard");
+                router.push("/dashboard");
+                router.refresh();
+            }
         } catch (err) {
-            setError("Ocorreu um erro inesperado. Tente novamente mais tarde.")
+            console.error("❌ Erro inesperado no onSubmit:", err);
+            setError("Ocorreu um erro inesperado. Tente novamente mais tarde.");
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
     }
 
@@ -86,7 +94,14 @@ export function LoginForm() {
                     Acesse o painel administrativo da Aerotech
                 </CardDescription>
             </CardHeader>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    console.log("📝 Evento onSubmit capturado");
+                    form.handleSubmit(onSubmit)(e);
+                }}
+                method="POST"
+            >
                 <CardContent className="space-y-4">
                     {error && (
                         <Alert variant="destructive">
