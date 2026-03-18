@@ -56,6 +56,8 @@ export function Sidebar() {
                     size="icon"
                     onClick={() => setIsCollapsed(!isCollapsed)}
                     className="text-slate-400 hover:text-white hover:bg-slate-800"
+                    aria-label={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                    title={isCollapsed ? "Expandir menu" : "Recolher menu"}
                 >
                     {isCollapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
                 </Button>
