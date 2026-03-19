@@ -305,8 +305,10 @@ export function ExpenseModal({ categories, onSuccess }: ExpenseModalProps) {
                                         size="icon"
                                         onClick={() => setReceiptFile(null)}
                                         className="text-slate-400 hover:text-red-500"
+                                        aria-label="Remover arquivo"
+                                        title="Remover arquivo"
                                     >
-                                        &times;
+                                        <span aria-hidden="true">&times;</span>
                                     </Button>
                                 )}
                             </div>
