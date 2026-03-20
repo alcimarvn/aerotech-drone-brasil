@@ -55,7 +55,7 @@ export function DashboardCharts({ data }: DashboardChartsProps) {
                             <Tooltip
                                 cursor={{ fill: '#f1f5f9' }}
                                 contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                                formatter={(value: number | undefined) => [value !== undefined ? formatCurrency(value) : '', ""]}
+                                formatter={(value: number | string | undefined) => [value !== undefined ? formatCurrency(Number(value)) : '', ""]}
                             />
                             <Bar
                                 dataKey="receita"
