@@ -29,11 +29,12 @@ export function DashboardHeader() {
                     <input
                         type="text"
                         placeholder="Buscar..."
+                        aria-label="Buscar no painel"
                         className="pl-10 pr-4 py-2 bg-slate-100 border-transparent rounded-lg text-sm focus:bg-white focus:border-slate-200 transition-all outline-none w-64"
                     />
                 </div>
 
-                <Button variant="ghost" size="icon" className="relative text-slate-500">
+                <Button variant="ghost" size="icon" aria-label="Notificações" className="relative text-slate-500">
                     <Bell className="w-5 h-5" />
                     <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
                 </Button>
