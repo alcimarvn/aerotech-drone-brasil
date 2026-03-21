@@ -221,7 +221,7 @@ export function OSTable({ orders, onStatusChange, onView, onEdit, onDelete }: OS
                                 <TableCell>
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
-                                            <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-500">
+                                            <Button variant="ghost" size="icon" aria-label="Abrir menu de ações" className="h-8 w-8 text-slate-500">
                                                 <MoreVertical className="h-4 w-4" />
                                             </Button>
                                         </DropdownMenuTrigger>
