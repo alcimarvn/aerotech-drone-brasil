@@ -33,14 +33,14 @@ export function DashboardHeader() {
                     />
                 </div>
 
-                <Button variant="ghost" size="icon" className="relative text-slate-500">
+                <Button variant="ghost" size="icon" className="relative text-slate-500" aria-label="Notificações">
                     <Bell className="w-5 h-5" />
                     <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
                 </Button>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="flex items-center gap-2 pl-2">
+                        <Button variant="ghost" className="flex items-center gap-2 pl-2" aria-label="Abrir menu do usuário">
                             <Avatar className="w-8 h-8">
                                 <AvatarFallback className="bg-primary/10 text-primary">
                                     {session?.user?.name?.charAt(0) || <User className="w-4 h-4" />}
