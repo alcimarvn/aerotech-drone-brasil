@@ -33,7 +33,7 @@ export function DashboardHeader() {
                     />
                 </div>
 
-                <Button variant="ghost" size="icon" className="relative text-slate-500">
+                <Button aria-label="Notificações" variant="ghost" size="icon" className="relative text-slate-500">
                     <Bell className="w-5 h-5" />
                     <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
                 </Button>
