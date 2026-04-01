@@ -1,0 +1,3 @@
+## 2024-05-24 - FAQ Accordion Accessibility Enhancement
+**Learning:** Custom accordions that don't use native `<details>`/`<summary>` or accessible libraries like Radix UI require explicit ARIA attributes (`aria-expanded`, `aria-controls`, `role="region"`, `aria-labelledby`) to be understandable by screen readers. Furthermore, keyboard users require distinct visual indicators when custom buttons receive focus.
+**Action:** When auditing or building custom interactive elements that hide/show content (like FAQs or menus), ensure `aria-expanded` and `aria-controls` are present on the trigger, and the target region has an `id` matching `aria-controls`. Always include `focus-visible` styles for better keyboard navigation without compromising mouse UX.
