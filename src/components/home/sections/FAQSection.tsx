@@ -35,7 +35,9 @@ export function FAQSection() {
                             >
                                 <button
                                     onClick={() => setActiveIndex(isOpen ? null : idx)}
-                                    className="w-full p-8 flex items-center justify-between text-left group"
+                                    aria-expanded={isOpen}
+                                    aria-controls={`faq-answer-${idx}`}
+                                    className="w-full p-8 flex items-center justify-between text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-[2rem]"
                                 >
                                     <div className="flex items-center gap-6">
                                         <div className={cn(
@@ -44,7 +46,9 @@ export function FAQSection() {
                                         )}>
                                             <HelpCircle className="w-6 h-6" />
                                         </div>
-                                        <h4 className={cn(
+                                        <h4
+                                            id={`faq-question-${idx}`}
+                                            className={cn(
                                             "text-xl font-bold transition-colors",
                                             isOpen ? "text-emerald-500" : "text-white"
                                         )}>{item.q}</h4>
@@ -55,7 +59,11 @@ export function FAQSection() {
                                     )} />
                                 </button>
 
-                                <div className={cn(
+                                <div
+                                    id={`faq-answer-${idx}`}
+                                    role="region"
+                                    aria-labelledby={`faq-question-${idx}`}
+                                    className={cn(
                                     "transition-all duration-500 ease-in-out",
                                     isOpen ? "max-h-[500px] opacity-100 mb-8 px-8 ml-12" : "max-h-0 opacity-0 pointer-events-none"
                                 )}>
