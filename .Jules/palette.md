@@ -1,0 +1,3 @@
+## 2025-02-18 - Collapsible Navigation Accessibility
+**Learning:** When a sidebar navigation menu collapses to an icon-only state, native screen reader accessibility and visual tooltips are often lost. Users relying on assistive technology lose context, and sighted users might not recognize the icons without hover text.
+**Action:** Always conditionally apply `aria-label` and `title` attributes on collapsible menu items when their text labels are hidden. Ensure the toggle button itself uses `aria-expanded` and an accurate `aria-label` to communicate its state. Hide decorative icons from screen readers using `aria-hidden="true"`.
