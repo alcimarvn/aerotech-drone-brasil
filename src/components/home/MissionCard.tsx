@@ -77,6 +77,13 @@ export function MissionCard({ id, videoSrc, title, location, droneModel, descrip
         }
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            togglePlay();
+        }
+    };
+
     const handleTimeUpdate = () => {
         if (videoRef.current) {
             const progress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
@@ -91,7 +98,14 @@ export function MissionCard({ id, videoSrc, title, location, droneModel, descrip
             <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-2 h-16 bg-[#2a2c2e] rounded-l-lg z-50 border-l border-white/5"></div>
 
             {/* Screen Container */}
-            <div className="relative aspect-[16/10] cursor-pointer bg-black overflow-hidden m-1 rounded-2xl" onClick={togglePlay}>
+            <div
+                className="relative aspect-[16/10] cursor-pointer bg-black overflow-hidden m-1 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1c1e]"
+                onClick={togglePlay}
+                onKeyDown={handleKeyDown}
+                role="button"
+                tabIndex={0}
+                aria-label={isPlaying ? "Pausar vídeo da missão" : "Reproduzir vídeo da missão"}
+            >
                 {/* Main Video (The Camera Feed) */}
                 <video
                     ref={videoRef}
@@ -149,7 +163,11 @@ export function MissionCard({ id, videoSrc, title, location, droneModel, descrip
                                 <span className="text-[10px] font-bold tabular-nums">0.00</span>
                             </div>
                         </div>
-                        <button onClick={(e) => { e.stopPropagation(); toggleMute(e); }} className="hover:text-emerald-400 transition-colors bg-black/40 p-2 rounded-full backdrop-blur-md border border-white/10">
+                        <button
+                            onClick={(e) => { e.stopPropagation(); toggleMute(e); }}
+                            className="hover:text-emerald-400 transition-colors bg-black/40 p-2 rounded-full backdrop-blur-md border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                            aria-label={isMuted ? "Ativar som" : "Desativar som"}
+                        >
                             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-emerald-500" />}
                         </button>
                     </div>

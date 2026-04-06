@@ -1,0 +1,3 @@
+## 2024-05-14 - Interactive Video Player Accessibility Focus Ring
+**Learning:** In dark-themed custom interactive elements (like the video player in `MissionCard`), the default browser outline is completely invisible. Users navigating via keyboard have no idea when they've focused the video element or its controls.
+**Action:** Always add an explicit focus ring using existing design system colors (e.g., `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950`) to custom interactive `div`s and icon-only buttons on dark backgrounds.
