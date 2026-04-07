@@ -55,7 +55,9 @@ export function Sidebar() {
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsCollapsed(!isCollapsed)}
-                    className="text-slate-400 hover:text-white hover:bg-slate-800"
+                    className="text-slate-400 hover:text-white hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+                    aria-label={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                    title={isCollapsed ? "Expandir menu" : "Recolher menu"}
                 >
                     {isCollapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
                 </Button>
@@ -69,11 +71,13 @@ export function Sidebar() {
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors group",
+                                "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors group focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none",
                                 isActive
                                     ? "bg-primary text-white"
                                     : "text-slate-400 hover:text-white hover:bg-slate-800"
                             )}
+                            aria-label={isCollapsed ? item.label : undefined}
+                            title={isCollapsed ? item.label : undefined}
                         >
                             <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} />
                             {!isCollapsed && <span className="font-medium">{item.label}</span>}
@@ -86,16 +90,20 @@ export function Sidebar() {
                 <Link
                     href="/dashboard/settings"
                     className={cn(
-                        "flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors mb-2",
+                        "flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors mb-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none",
                         pathname === "/dashboard/settings" && "bg-slate-800 text-white"
                     )}
+                    aria-label={isCollapsed ? "Configurações" : undefined}
+                    title={isCollapsed ? "Configurações" : undefined}
                 >
                     <Settings className="w-5 h-5 shrink-0" />
                     {!isCollapsed && <span className="font-medium">Configurações</span>}
                 </Link>
                 <button
                     onClick={() => signOut({ callbackUrl: "/" })}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors"
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+                    aria-label={isCollapsed ? "Sair" : undefined}
+                    title={isCollapsed ? "Sair" : undefined}
                 >
                     <LogOut className="w-5 h-5 shrink-0" />
                     {!isCollapsed && <span className="font-medium">Sair</span>}

@@ -1,0 +1,3 @@
+## 2025-04-07 - Icon-only Navigation Drawers
+**Learning:** Dark-themed sidebars often obscure default browser focus outlines. When a sidebar collapses into an icon-only state, the elements lose implicit labeling and require explicit `aria-label` attributes to remain accessible, alongside explicit `title` tooltips for hover interaction.
+**Action:** When implementing collapsible navigation, conditionally apply `aria-label` and `title` attributes based on the collapsed state, and use explicit `focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none` styling to guarantee keyboard navigation visibility.
