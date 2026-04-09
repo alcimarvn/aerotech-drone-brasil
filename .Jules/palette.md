@@ -1,0 +1,3 @@
+## 2024-05-14 - Dashboard Header User Menu Accessibility
+**Learning:** Adding a static `aria-label` to a button that *also* contains dynamically rendered visible text (like a user's name on desktop screens) creates a WCAG violation (Label in Name, WCAG 2.5.3), because the accessible name completely overrides and obscures the visible text. This prevents screen reader users from accessing information visible to others.
+**Action:** When adding `aria-label` to buttons with visible text, ensure the accessible name *includes* the visible text dynamically (e.g., ``aria-label={`Menu do usuário ${session?.user?.name}`}``), and hide the visible DOM element from screen readers using `aria-hidden="true"` to prevent redundant reading.
