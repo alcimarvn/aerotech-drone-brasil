@@ -33,22 +33,26 @@ export function DashboardHeader() {
                     />
                 </div>
 
-                <Button variant="ghost" size="icon" className="relative text-slate-500">
-                    <Bell className="w-5 h-5" />
-                    <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+                <Button variant="ghost" size="icon" className="relative text-slate-500" aria-label="Notificações">
+                    <div aria-hidden="true" className="flex items-center justify-center w-full h-full">
+                        <Bell className="w-5 h-5" />
+                        <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+                    </div>
                 </Button>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="flex items-center gap-2 pl-2">
-                            <Avatar className="w-8 h-8">
-                                <AvatarFallback className="bg-primary/10 text-primary">
-                                    {session?.user?.name?.charAt(0) || <User className="w-4 h-4" />}
-                                </AvatarFallback>
-                            </Avatar>
-                            <div className="text-left hidden lg:block">
-                                <p className="text-sm font-medium leading-none">{session?.user?.name || "Usuário"}</p>
-                                <p className="text-xs text-slate-500">{session?.user?.role || "Operador"}</p>
+                        <Button variant="ghost" className="flex items-center gap-2 pl-2" aria-label={`Menu do usuário ${session?.user?.name || "Usuário"}`}>
+                            <div aria-hidden="true" className="flex items-center gap-2">
+                                <Avatar className="w-8 h-8">
+                                    <AvatarFallback className="bg-primary/10 text-primary">
+                                        {session?.user?.name?.charAt(0) || <User className="w-4 h-4" />}
+                                    </AvatarFallback>
+                                </Avatar>
+                                <div className="text-left hidden lg:block">
+                                    <p className="text-sm font-medium leading-none">{session?.user?.name || "Usuário"}</p>
+                                    <p className="text-xs text-slate-500">{session?.user?.role || "Operador"}</p>
+                                </div>
                             </div>
                         </Button>
                     </DropdownMenuTrigger>
