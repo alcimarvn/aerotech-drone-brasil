@@ -1,0 +1,3 @@
+## 2024-04-19 - Accessible Names for Responsive Elements
+**Learning:** Elements that visually hide text on certain breakpoints (e.g., hiding a username on mobile, leaving only an avatar) lose their accessible name on those viewports if relying purely on the text content. Screen readers may announce the element incorrectly or as blank.
+**Action:** Always provide a dynamic `aria-label` directly on the interactive element (e.g., `<Button aria-label={\`Menu do usuário \${name}\`}>`) and apply `aria-hidden="true"` to the internal decorative or responsive child elements to prevent redundant announcements and ensure consistent labeling across all viewports (complying with WCAG 2.5.3 Label in Name).
