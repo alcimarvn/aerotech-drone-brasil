@@ -46,7 +46,9 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                     // MINIMIZED STATE: Small Floating Circle
                     <button
                         onClick={() => setIsMinimized(false)}
-                        className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min"
+                        className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f231d]"
+                        aria-label="Expandir consultoria gratuita"
+                        aria-expanded={!isMinimized}
                     >
                         <WhatsAppIcon className="w-7 h-7" />
 
@@ -67,8 +69,10 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                         {/* Close/Minimize Button */}
                         <button
                             onClick={() => setIsMinimized(true)}
-                            className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1"
+                            className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-md"
                             title="Recolher"
+                            aria-label="Recolher consultoria gratuita"
+                            aria-expanded={!isMinimized}
                         >
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />

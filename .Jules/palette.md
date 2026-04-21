@@ -1,0 +1,3 @@
+## 2024-05-18 - Adding Accessible Interactions to Floating Elements
+**Learning:** When adding aria-label to interactive toggle buttons (like a floating CTA) that change state between "minimized" and "expanded", it is critical to also use aria-expanded to convey the state change to screen readers, and explicit focus-visible styling is necessary so keyboard users can track focus on floating elements overlaid on complex backgrounds.
+**Action:** When adding accessible names to stateful toggle buttons in custom UI components (like floating action buttons), ensure the aria-expanded attribute is dynamically bound to the state, and always include focus-visible utility classes for clear visual keyboard navigation.
