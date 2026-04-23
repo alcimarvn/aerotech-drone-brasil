@@ -1,0 +1,3 @@
+## 2024-05-18 - Dashboard Header Accessibility
+**Learning:** Adding `aria-label` to interactive elements that also contain dynamically rendered visible text should explicitly include the visible text dynamically (e.g., `aria-label={\`Menu ${session?.user?.name}\`}`) to prevent WCAG 2.5.3 (Label in Name) violations. Hiding the inner visible DOM element from screen readers using `aria-hidden="true"` avoids redundant announcements.
+**Action:** Always include the visual text in the `aria-label` for buttons that contain both icons and dynamic text, and hide the visual text container with `aria-hidden="true"`.
