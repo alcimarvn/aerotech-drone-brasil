@@ -1,0 +1,3 @@
+## 2024-05-18 - Adding `aria-expanded` to Stateful Components
+**Learning:** For components that toggle between states (like a minimized vs expanded CTA), merely adding an `aria-label` isn't enough. Screen readers benefit significantly from the `aria-expanded` attribute dynamically bound to the state, as it properly communicates the element's state changes.
+**Action:** Always include `aria-expanded` dynamically when adding accessible names (`aria-label`) to stateful toggle buttons or floating elements. Also, ensure the inner visible element (like an SVG) is hidden from screen readers using `aria-hidden="true"` to avoid redundant announcements.
