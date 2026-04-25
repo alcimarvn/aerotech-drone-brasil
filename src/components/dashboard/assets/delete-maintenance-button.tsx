@@ -49,7 +49,7 @@ export function DeleteMaintenanceButton({ maintenanceId, onSuccess }: DeleteMain
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors">
+                <Button variant="ghost" size="icon" aria-label="Excluir registro de manutenção" title="Excluir registro de manutenção" className="h-8 w-8 text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors">
                     <Trash2 className="h-4 w-4" />
                 </Button>
             </AlertDialogTrigger>
@@ -61,7 +61,7 @@ export function DeleteMaintenanceButton({ maintenanceId, onSuccess }: DeleteMain
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                    <AlertDialogCancel disabled={isDeleting}>Cancelar</AlertDialogCancel>
                     <AlertDialogAction
                         onClick={(e) => {
                             e.preventDefault()

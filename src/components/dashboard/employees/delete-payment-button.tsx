@@ -46,7 +46,7 @@ export function DeletePaymentButton({ paymentId }: DeletePaymentButtonProps) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-red-600 transition-colors">
+                <Button variant="ghost" size="icon" aria-label="Estornar pagamento" title="Estornar pagamento" className="h-8 w-8 text-slate-400 hover:text-red-600 transition-colors">
                     <Trash2 className="w-4 h-4" />
                 </Button>
             </AlertDialogTrigger>
