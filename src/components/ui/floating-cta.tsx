@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon"
-import { ArrowRight, Sparkles, MessageSquare } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
@@ -45,10 +45,12 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                 {isMinimized ? (
                     // MINIMIZED STATE: Small Floating Circle
                     <button
+                        aria-label="Expandir consultoria"
+                        aria-expanded="false"
                         onClick={() => setIsMinimized(false)}
-                        className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min"
+                        className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f231d]"
                     >
-                        <WhatsAppIcon className="w-7 h-7" />
+                        <WhatsAppIcon aria-hidden="true" className="w-7 h-7" />
 
                         {/* Persistent Notification Badge */}
                         <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center">
@@ -66,11 +68,13 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                     <div className="relative bg-[#0f231d]/95 backdrop-blur-2xl border border-white/10 p-6 rounded-[2rem] shadow-2xl flex flex-col gap-4 max-w-[280px] animate-pulse-slow">
                         {/* Close/Minimize Button */}
                         <button
+                            aria-label="Recolher consultoria"
+                            aria-expanded="true"
                             onClick={() => setIsMinimized(true)}
-                            className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1"
+                            className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f231d] rounded-md"
                             title="Recolher"
                         >
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
