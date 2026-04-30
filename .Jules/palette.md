@@ -1,0 +1,3 @@
+## 2025-02-18 - Dashboard Header Accessibility
+**Learning:** Adding accessible names (`aria-label`) to user-facing inputs and icon-only buttons is crucial for improving navigation via screen readers, especially in headers. When providing an `aria-label` to a parent button container, embedded decorative SVGs (like Lucide icons) and secondary visible texts should explicitly have `aria-hidden="true"` to prevent redundant, confusing screen reader announcements.
+**Action:** Ensure that for future layout and header components containing icon-only buttons, dynamic dropdowns, or inputs, `aria-label` is applied to the interactive element, while visual-only embellishments are hidden.
