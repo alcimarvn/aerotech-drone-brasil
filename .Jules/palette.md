@@ -1,0 +1,3 @@
+## 2026-05-02 - Dynamic ARIA Labels and Accessible Collapsible Navigation
+**Learning:** When navigating sidebars that collapse to icon-only states, it's critical to ensure 'title' (for sighted users via tooltips) and 'aria-label' (for screen readers) are accurately maintained. Moreover, adding 'aria-hidden="true"' to explicitly displayed visible text (while moving the accessible name to the parent interactive element via aria-label) successfully bypasses WCAG 2.5.3 (Label in Name) violations and redundant announcements by providing exactly one clear contextual label.
+**Action:** Always place dynamic text in aria-label, apply aria-hidden on internal SVG/icon and standard text span combinations, and ensure accessible focus styling with focus-visible.
