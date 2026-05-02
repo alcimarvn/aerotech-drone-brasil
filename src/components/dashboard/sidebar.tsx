@@ -55,9 +55,11 @@ export function Sidebar() {
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsCollapsed(!isCollapsed)}
-                    className="text-slate-400 hover:text-white hover:bg-slate-800"
+                    className="text-slate-400 hover:text-white hover:bg-slate-800 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-primary"
+                    aria-label={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                    aria-expanded={!isCollapsed}
                 >
-                    {isCollapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+                    {isCollapsed ? <Menu className="w-5 h-5" aria-hidden="true" /> : <ChevronLeft className="w-5 h-5" aria-hidden="true" />}
                 </Button>
             </div>
 
@@ -68,15 +70,17 @@ export function Sidebar() {
                         <Link
                             key={item.href}
                             href={item.href}
+                            aria-label={item.label}
+                            title={isCollapsed ? item.label : undefined}
                             className={cn(
-                                "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors group",
+                                "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors group focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-primary",
                                 isActive
                                     ? "bg-primary text-white"
                                     : "text-slate-400 hover:text-white hover:bg-slate-800"
                             )}
                         >
-                            <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} />
-                            {!isCollapsed && <span className="font-medium">{item.label}</span>}
+                            <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} aria-hidden="true" />
+                            {!isCollapsed && <span className="font-medium" aria-hidden="true">{item.label}</span>}
                         </Link>
                     )
                 })}
@@ -85,20 +89,24 @@ export function Sidebar() {
             <div className="p-4 border-t border-slate-800">
                 <Link
                     href="/dashboard/settings"
+                    aria-label="Configurações"
+                    title={isCollapsed ? "Configurações" : undefined}
                     className={cn(
-                        "flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors mb-2",
+                        "flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors mb-2 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-primary",
                         pathname === "/dashboard/settings" && "bg-slate-800 text-white"
                     )}
                 >
-                    <Settings className="w-5 h-5 shrink-0" />
-                    {!isCollapsed && <span className="font-medium">Configurações</span>}
+                    <Settings className="w-5 h-5 shrink-0" aria-hidden="true" />
+                    {!isCollapsed && <span className="font-medium" aria-hidden="true">Configurações</span>}
                 </Link>
                 <button
                     onClick={() => signOut({ callbackUrl: "/" })}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors"
+                    aria-label="Sair"
+                    title={isCollapsed ? "Sair" : undefined}
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-primary"
                 >
-                    <LogOut className="w-5 h-5 shrink-0" />
-                    {!isCollapsed && <span className="font-medium">Sair</span>}
+                    <LogOut className="w-5 h-5 shrink-0" aria-hidden="true" />
+                    {!isCollapsed && <span className="font-medium" aria-hidden="true">Sair</span>}
                 </button>
             </div>
         </aside>
