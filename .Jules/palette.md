@@ -1,0 +1,3 @@
+## 2024-05-03 - Accessible Labels for Responsive Components
+**Learning:** WCAG 2.5.3 (Label in Name) can be violated when an element (like a user menu button) has visible text that is hidden on mobile screens, and lacks an accessible name. Relying purely on inner text that might be hidden via `display: none` creates accessibility inconsistencies across breakpoints.
+**Action:** Always explicitly bind `aria-label` to interactive elements containing dynamically hidden text, and apply `aria-hidden="true"` to the inner content to prevent screen readers from reading duplicate information when the text is visible.
