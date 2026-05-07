@@ -55,7 +55,10 @@ export function Sidebar() {
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsCollapsed(!isCollapsed)}
-                    className="text-slate-400 hover:text-white hover:bg-slate-800"
+                    className="text-slate-400 hover:text-white hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-emerald-500"
+                    aria-label={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                    aria-expanded={!isCollapsed}
+                    title={isCollapsed ? "Expandir menu" : "Recolher menu"}
                 >
                     {isCollapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
                 </Button>
@@ -95,9 +98,11 @@ export function Sidebar() {
                 </Link>
                 <button
                     onClick={() => signOut({ callbackUrl: "/" })}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors"
+                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors focus-visible:ring-2 focus-visible:ring-emerald-500"
+                    aria-label="Sair do sistema"
+                    title={isCollapsed ? "Sair do sistema" : undefined}
                 >
-                    <LogOut className="w-5 h-5 shrink-0" />
+                    <LogOut className="w-5 h-5 shrink-0" aria-hidden="true" />
                     {!isCollapsed && <span className="font-medium">Sair</span>}
                 </button>
             </div>
