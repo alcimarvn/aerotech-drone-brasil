@@ -1,0 +1,3 @@
+## 2024-05-10 - Dynamic Context for Collapsed Sidebars
+**Learning:** When sidebars collapse into icon-only states, screen reader context is lost if labels are merely hidden visually. Furthermore, hover tooltips (`title`) are necessary for sighted users who may not recognize the icons.
+**Action:** When creating or modifying collapsible sidebars, always dynamically bind `title` and `aria-label` to the collapsed state (e.g., `title={isCollapsed ? "Label" : undefined}`). Explicitly set `aria-hidden="true"` on decorative icons and `aria-expanded` on toggle buttons. Ensure dark-themed interactive elements have explicit focus styling like `focus-visible:ring-2` for accessibility.
