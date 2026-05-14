@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessibility improvements for icon-only buttons
+**Learning:** Found an accessibility issue pattern in the app's components, where decorative icon-only buttons (like close buttons using SVGs) are frequently used without `aria-label` or `title` attributes, making them inaccessible to screen readers.
+**Action:** When working on icon-only buttons in the future, add an `aria-label` attribute describing the action, a `title` attribute for visual tooltips, and an `aria-hidden="true"` attribute on the inner decorative element (like an SVG or Lucide React icon) to ensure screen readers don't announce redundant or meaningless information. Additionally, explicitly style focus rings for keyboard users.
