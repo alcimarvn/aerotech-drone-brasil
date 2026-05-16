@@ -1,0 +1,3 @@
+## 2025-02-14 - Contextual Accessibility for Collapsible UI
+**Learning:** When navigating collapsible UIs (like a sidebar) where links collapse down to icon-only buttons, it is crucial to dynamically bind `aria-label` and `title` to the collapsed state. This ensures screen reader users and mouse users retain context when the visible labels disappear, while avoiding redundant announcements when expanded. Additionally, `aria-expanded` and focus rings are important for keyboard users managing the toggle itself.
+**Action:** Always conditionally apply `aria-label` and `title` (e.g., `aria-label={isCollapsed ? label : undefined}`) to interactive elements that lose their visible text nodes during responsive or toggle-based layout changes.
