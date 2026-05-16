@@ -55,13 +55,16 @@ export function Sidebar() {
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsCollapsed(!isCollapsed)}
-                    className="text-slate-400 hover:text-white hover:bg-slate-800"
+                    className="text-slate-400 hover:text-white hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-label={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                    title={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                    aria-expanded={!isCollapsed}
                 >
-                    {isCollapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+                    {isCollapsed ? <Menu className="w-5 h-5" aria-hidden="true" /> : <ChevronLeft className="w-5 h-5" aria-hidden="true" />}
                 </Button>
             </div>
 
-            <nav className="flex-1 px-4 space-y-1 mt-4">
+            <nav className="flex-1 px-4 space-y-1 mt-4" aria-label="Menu principal">
                 {menuItems.map((item) => {
                     const isActive = pathname === item.href
                     return (
@@ -74,8 +77,10 @@ export function Sidebar() {
                                     ? "bg-primary text-white"
                                     : "text-slate-400 hover:text-white hover:bg-slate-800"
                             )}
+                            aria-label={isCollapsed ? item.label : undefined}
+                            title={isCollapsed ? item.label : undefined}
                         >
-                            <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} />
+                            <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} aria-hidden="true" />
                             {!isCollapsed && <span className="font-medium">{item.label}</span>}
                         </Link>
                     )
@@ -89,15 +94,19 @@ export function Sidebar() {
                         "flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors mb-2",
                         pathname === "/dashboard/settings" && "bg-slate-800 text-white"
                     )}
+                    aria-label={isCollapsed ? "Configurações" : undefined}
+                    title={isCollapsed ? "Configurações" : undefined}
                 >
-                    <Settings className="w-5 h-5 shrink-0" />
+                    <Settings className="w-5 h-5 shrink-0" aria-hidden="true" />
                     {!isCollapsed && <span className="font-medium">Configurações</span>}
                 </Link>
                 <button
                     onClick={() => signOut({ callbackUrl: "/" })}
                     className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors"
+                    aria-label={isCollapsed ? "Sair" : undefined}
+                    title={isCollapsed ? "Sair" : undefined}
                 >
-                    <LogOut className="w-5 h-5 shrink-0" />
+                    <LogOut className="w-5 h-5 shrink-0" aria-hidden="true" />
                     {!isCollapsed && <span className="font-medium">Sair</span>}
                 </button>
             </div>
