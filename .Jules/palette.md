@@ -1,0 +1,3 @@
+## 2024-05-23 - Accessibility for Collapsible Elements with Unmounted Text
+**Learning:** When a UI element (like a sidebar) collapses and conditionally unmounts its text (`{!isCollapsed && <span>Text</span>}`), the remaining icon-only buttons/links lose their accessible names and context, becoming opaque to screen readers and confusing to regular users.
+**Action:** Always dynamically bind `aria-label` (for screen readers) and `title` (for visual tooltips on hover) to the collapsed state (`isCollapsed ? "Text" : undefined`). Additionally, ensure decorative SVGs inside these elements have `aria-hidden="true"` to prevent redundant generic announcements.
