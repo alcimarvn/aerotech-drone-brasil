@@ -1,0 +1,3 @@
+## 2025-05-24 - Accessible Collapsible Sidebars
+**Learning:** Collapsible sidebars that reduce navigation links to icon-only buttons remove the visible text labels, making them inaccessible to screen readers and lacking context for visual users. Furthermore, expand/collapse buttons need to explicitly announce their state and action.
+**Action:** Dynamically bind `aria-label` and `title` to the menu items based on the collapsed state. Add `aria-expanded` and an action-oriented `aria-label` to the collapse toggle button. Ensure icons have `aria-hidden="true"` to prevent redundant screen reader announcements. Add `focus-visible:ring-2` to all interactive items for keyboard navigation accessibility in dark mode.
