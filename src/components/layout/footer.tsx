@@ -130,10 +130,14 @@ export function Footer() {
                             <input
                                 type="email"
                                 placeholder="Seu e-mail..."
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder:text-slate-600"
+                                aria-label="Endereço de e-mail para receber informativo"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-emerald-500/50 focus-visible:ring-2 focus-visible:ring-emerald-500 transition-all placeholder:text-slate-600"
                             />
-                            <button className="absolute right-2 top-2 bottom-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-lg transition-all flex items-center justify-center group/btn shadow-[0_0_15px_rgba(5,150,105,0.3)]">
-                                <Send className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                            <button
+                                className="absolute right-2 top-2 bottom-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-lg transition-all flex items-center justify-center group/btn shadow-[0_0_15px_rgba(5,150,105,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f231d]"
+                                aria-label="Inscrever-se no informativo"
+                            >
+                                <Send className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" aria-hidden="true" />
                             </button>
                         </form>
 
