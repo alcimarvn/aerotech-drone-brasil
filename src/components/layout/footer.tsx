@@ -42,16 +42,17 @@ export function Footer() {
 
                         <div className="flex gap-4">
                             {[
-                                { icon: Instagram, href: "https://instagram.com/aerotechdronesbrasil" },
-                                { icon: Linkedin, href: "#" },
-                                { icon: Facebook, href: "#" }
+                                { icon: Instagram, href: "https://instagram.com/aerotechdronesbrasil", name: "Instagram" },
+                                { icon: Linkedin, href: "#", name: "LinkedIn" },
+                                { icon: Facebook, href: "#", name: "Facebook" }
                             ].map((social, i) => (
                                 <Link
                                     key={i}
                                     href={social.href}
-                                    className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400 transition-all duration-300 hover:-translate-y-1 group"
+                                    aria-label={social.name}
+                                    className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400 transition-all duration-300 hover:-translate-y-1 group focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-none"
                                 >
-                                    <social.icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+                                    <social.icon className="w-5 h-5 transition-transform group-hover:scale-110" aria-hidden="true" />
                                 </Link>
                             ))}
                         </div>
@@ -130,10 +131,15 @@ export function Footer() {
                             <input
                                 type="email"
                                 placeholder="Seu e-mail..."
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder:text-slate-600"
+                                aria-label="E-mail para informativo"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-emerald-500/50 focus-visible:ring-2 focus-visible:ring-emerald-500 transition-all placeholder:text-slate-600"
                             />
-                            <button className="absolute right-2 top-2 bottom-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-lg transition-all flex items-center justify-center group/btn shadow-[0_0_15px_rgba(5,150,105,0.3)]">
-                                <Send className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                            <button
+                                type="submit"
+                                aria-label="Assinar informativo"
+                                className="absolute right-2 top-2 bottom-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-lg transition-all flex items-center justify-center group/btn shadow-[0_0_15px_rgba(5,150,105,0.3)] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+                            >
+                                <Send className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" aria-hidden="true" />
                             </button>
                         </form>
 
