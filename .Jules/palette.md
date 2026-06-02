@@ -1,0 +1,3 @@
+## 2024-05-18 - Dynamically adapting attributes for collapsible UI elements
+**Learning:** Collapsible sidebars that reduce navigation to icon-only buttons need dynamic label adaptation. When expanded, the label is visible alongside the icon. When collapsed, the icon becomes the sole context, requiring an explicit `aria-label` and `title` to maintain accessibility and UX. Also, toggle buttons for these sidebars should use `aria-expanded` and an alternating `aria-label` (e.g. "Expand/Collapse") so screen readers can interpret the state properly.
+**Action:** Always dynamically bind `aria-label` and `title` to the collapsed state for icon navigation items, use `aria-expanded` on toggle buttons, and hide decorative SVG icons with `aria-hidden="true"`.
