@@ -1,0 +1,3 @@
+## 2024-06-03 - Floating CTA Accessibility
+**Learning:** Adding accessible names (`aria-label`) to stateful toggle buttons or floating elements is incomplete without explicitly including the `aria-expanded` attribute dynamically bound to the state, along with explicit `focus-visible` utility classes for keyboard navigation. Additionally, purely visual HTML elements (like notification badges) nested within interactive elements should have `aria-hidden="true"` to ensure a clear, non-redundant experience for screen reader users.
+**Action:** When implementing or fixing Floating CTAs, always ensure toggle states have corresponding `aria-expanded` and hide non-semantic icons/badges using `aria-hidden="true"`. Use explicit `focus-visible` outlines.
