@@ -1,0 +1,4 @@
+
+## 2024-05-18 - Dynamically Bind ARIA Labels for Responsive "Icon-Only" Elements
+**Learning:** When a button contains visible text that gets hidden via responsive CSS classes (like `hidden lg:block`), the button essentially becomes "icon-only" on smaller screens, potentially losing its accessible name if screen readers rely on the visible text. Furthermore, if you simply add an `aria-label` but don't hide the visually rendering text on larger screens with `aria-hidden="true"`, screen readers may announce the label twice.
+**Action:** When adding an `aria-label` to elements that have responsive visible text, ensure the `aria-label` dynamically includes any bound variables (e.g. `aria-label={\`User Menu \${name}\`}`), and explicitly wrap the inner visible text/icons with `aria-hidden="true"` to prevent redundant screen reader announcements across different viewport sizes.
