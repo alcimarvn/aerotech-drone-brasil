@@ -49,8 +49,8 @@ export function DeleteMaintenanceButton({ maintenanceId, onSuccess }: DeleteMain
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors">
-                    <Trash2 className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors" aria-label="Excluir manutenção" title="Excluir manutenção">
+                    <Trash2 className="h-4 w-4" aria-hidden="true" />
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
