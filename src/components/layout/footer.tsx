@@ -127,13 +127,20 @@ export function Footer() {
                             Receba atualizações sobre tecnologias de precisão e operações no campo.
                         </p>
                         <form className="relative group/form" onSubmit={(e) => e.preventDefault()}>
+                            <label htmlFor="newsletter-email" className="sr-only">
+                                Endereço de e-mail para newsletter
+                            </label>
                             <input
+                                id="newsletter-email"
                                 type="email"
                                 placeholder="Seu e-mail..."
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder:text-slate-600"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#05110e] transition-all placeholder:text-slate-600"
                             />
-                            <button className="absolute right-2 top-2 bottom-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-lg transition-all flex items-center justify-center group/btn shadow-[0_0_15px_rgba(5,150,105,0.3)]">
-                                <Send className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                            <button
+                                aria-label="Inscrever-se na newsletter"
+                                className="absolute right-2 top-2 bottom-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-lg transition-all flex items-center justify-center group/btn shadow-[0_0_15px_rgba(5,150,105,0.3)] focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#05110e]"
+                            >
+                                <Send aria-hidden="true" className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                             </button>
                         </form>
 
