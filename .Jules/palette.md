@@ -1,0 +1,3 @@
+## 2024-06-13 - [Dashboard Header Accessibility]
+**Learning:** Responsive UI classes (e.g., `hidden lg:block` for a user's name) can turn a text-bearing button into an icon-only button on mobile. Simply adding an `aria-label` to the button is insufficient if the visible text on desktop still exists within the button, leading to WCAG 2.5.3 (Label in Name) violations where the accessible name differs from the visible label.
+**Action:** Always dynamically include the visible text within the `aria-label` (e.g., `aria-label={\`Menu do usuário ${name}\`}`) and explicitly apply `aria-hidden="true"` to the inner visual text element. This ensures the screen reader name is consistent and comprehensive across all breakpoints while preventing redundant announcements.
