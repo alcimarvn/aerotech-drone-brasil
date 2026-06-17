@@ -1,0 +1,45 @@
+
+> app_temp@0.1.0 dev /app
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+- Experiments (use with caution):
+  · serverActions
+
+✓ Starting...
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+✓ Ready in 1740ms
+
+warn - The class `duration-[10s]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `duration-&lsqb;10s&rsqb;` to silence this warning.
+
+warn - The class `duration-[20s]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `duration-&lsqb;20s&rsqb;` to silence this warning.
+
+warn - The class `ease-[cubic-bezier(0.23,1,0.32,1)]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.23,1,0.32,1)&rsqb;` to silence this warning.
+○ Compiling /dashboard ...
+⨯ ./src/lib/upload.ts:3:1
+Module not found: Can't resolve 'uuid'
+[0m [90m 1 |[39m [36mimport[39m { writeFile[33m,[39m mkdir } [36mfrom[39m [32m"fs/promises"[39m
+ [90m 2 |[39m [36mimport[39m { join } [36mfrom[39m [32m"path"[39m
+[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m { v4 [36mas[39m uuidv4 } [36mfrom[39m [32m"uuid"[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 4 |[39m
+ [90m 5 |[39m [36mexport[39m [36masync[39m [36mfunction[39m uploadFile(file[33m:[39m [33mFile[39m)[33m:[39m [33mPromise[39m[33m<[39m[33mstring[39m [33m|[39m [36mnull[39m[33m>[39m {
+ [90m 6 |[39m     [36mif[39m ([33m![39mfile [33m||[39m file[33m.[39msize [33m===[39m [35m0[39m) [36mreturn[39m [36mnull[39m[0m
+
+
+
+Import trace:
+  Server Component:
+    ./src/lib/upload.ts
+    ./src/app/actions/financial.ts
+    ./src/app/(dashboard)/dashboard/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /dashboard 500 in 10.6s (compile: 10.3s, proxy.ts: 118ms, render: 173ms)
