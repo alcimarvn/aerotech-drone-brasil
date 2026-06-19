@@ -1,0 +1,3 @@
+## 2024-05-18 - ARIA Labels and Focus States on Dynamic Icon Buttons
+**Learning:** When adding ARIA labels to user profile buttons and notification buttons that hide visible text dynamically on smaller screens (e.g. `hidden lg:block`), or use badges, it is crucial to apply `aria-hidden="true"` to the inner textual and icon elements while placing the `aria-label` dynamically on the outer interactive element to avoid redundant screen reader announcements.
+**Action:** Always dynamically bind `aria-label` to state (`session?.user?.name`) on outer trigger elements while applying `aria-hidden="true"` to inner components (`<Avatar>`, `<Bell>`, text wrappers) when enhancing responsive icon-heavy headers.
