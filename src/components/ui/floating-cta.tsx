@@ -46,18 +46,19 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                     // MINIMIZED STATE: Small Floating Circle
                     <button
                         onClick={() => setIsMinimized(false)}
-                        className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min"
+                        className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                        aria-label="Expandir consultoria disponível, 1 notificação"
                     >
-                        <WhatsAppIcon className="w-7 h-7" />
+                        <WhatsAppIcon className="w-7 h-7" aria-hidden="true" />
 
                         {/* Persistent Notification Badge */}
-                        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center">
+                        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center" aria-hidden="true">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 text-[8px] font-bold text-white items-center justify-center">1</span>
                         </span>
 
                         {/* Tooltip */}
-                        <div className="absolute right-full mr-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-white text-[10px] font-bold whitespace-nowrap opacity-0 group-hover/min:opacity-100 transition-opacity pointer-events-none border border-white/10 uppercase tracking-widest">
+                        <div className="absolute right-full mr-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-white text-[10px] font-bold whitespace-nowrap opacity-0 group-hover/min:opacity-100 transition-opacity pointer-events-none border border-white/10 uppercase tracking-widest" aria-hidden="true">
                             Consultoria Disponível
                         </div>
                     </button>
@@ -67,10 +68,11 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                         {/* Close/Minimize Button */}
                         <button
                             onClick={() => setIsMinimized(true)}
-                            className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1"
+                            className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded"
                             title="Recolher"
+                            aria-label="Recolher consultoria"
                         >
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
