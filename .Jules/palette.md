@@ -1,0 +1,3 @@
+## 2026-06-22 - Missing ARIA Labels on Floating/Interactive UI elements
+**Learning:** Icon-only buttons used in interactive UI elements like the Floating CTA, Live Notifications, Video Cards, and Footer forms lack accessible names, making them invisible or confusing to screen reader users. The application also uses raw '<button>' elements without keyboard focus indicators.
+**Action:** When working on floating UI elements or interactive cards, ensure all icon-only '<button>' elements include descriptive 'aria-label' attributes and use 'focus-visible:ring-2' for keyboard accessibility. Ensure Radix Primitives or 'Button' components are used where possible, or add the appropriate a11y attributes.
