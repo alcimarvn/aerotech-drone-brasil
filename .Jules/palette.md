@@ -1,0 +1,4 @@
+
+## 2024-05-18 - Dynamic ARIA Labels in Responsive Sidebars
+**Learning:** When using responsive/collapsible sidebars where navigation items collapse to icon-only representations, relying solely on static visible text for screen readers becomes an issue. Without accessible labels in the collapsed state, visually hidden tooltips alone are inadequate for accessibility. Adding static labels might conflict when the visible text is present.
+**Action:** Always dynamically bind `aria-label` and `title` to the collapsed state (e.g., `aria-label={isCollapsed ? "Label" : undefined}`). Apply `aria-hidden="true"` to structural icons to prevent screen readers from reading decorative icons unnecessarily. Additionally, use `focus-visible:ring-2 focus-visible:outline-none` on interactive sidebar components to ensure clean keyboard focus visibility in dark-themed menus.
