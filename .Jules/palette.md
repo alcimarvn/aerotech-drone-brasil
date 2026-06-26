@@ -1,0 +1,3 @@
+## 2024-05-18 - Improve Accessibility of Collapsible Sidebar Navigation
+**Learning:** When creating collapsible sidebars that hide text visually, `{!isCollapsed && <span>...</span>}` unmounts the element, destroying the accessible name for screen readers. Using `title` tooltips combined with a conditionally applied `sr-only` class on the text span maintains the accessible name while addressing visual functionality. Focus rings on dark themes should explicitly set high contrast colors using `focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900`.
+**Action:** Use `sr-only` over conditional rendering for text labels inside icon-centric navigational controls and ensure clear keyboard focus styling on dark background elements.
