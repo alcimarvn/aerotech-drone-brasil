@@ -1,0 +1,3 @@
+## 2024-06-29 - Accessible Collapsible Sidebar
+**Learning:** Conditionally unmounting text inside a collapsible sidebar (`{!isCollapsed && <span>Text</span>}`) makes the remaining icon buttons inaccessible to screen readers because they lose their accessible name.
+**Action:** Instead of unmounting the text, conditionally apply a visually hidden class (`sr-only`) to the text wrapper. This ensures the text remains in the DOM as an accessible name for screen readers while saving visual space. Additionally, pair this with `title` attributes to act as tooltips for sighted users when the sidebar is collapsed.

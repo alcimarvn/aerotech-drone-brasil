@@ -1,0 +1,147 @@
+
+> app_temp@0.1.0 dev /app
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+- Experiments (use with caution):
+  · serverActions
+
+✓ Starting...
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+✓ Ready in 1749ms
+
+warn - The class `duration-[10s]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `duration-&lsqb;10s&rsqb;` to silence this warning.
+
+warn - The class `duration-[20s]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `duration-&lsqb;20s&rsqb;` to silence this warning.
+
+warn - The class `ease-[cubic-bezier(0.23,1,0.32,1)]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.23,1,0.32,1)&rsqb;` to silence this warning.
+○ Compiling /dashboard ...
+⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+Error fetching dashboard stats: Error [PrismaClientInitializationError]:
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].client.count()` invocation in
+/app/.next/dev/server/chunks/ssr/[root-of-the-server]__0b7b5ee6._.js:102:161
+
+   99 const lastMonthStart = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$date$2d$fns$40$4$2e$4$2e$0$2f$node_modules$2f$date$2d$fns$2f$startOfMonth$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["startOfMonth"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$date$2d$fns$40$4$2e$4$2e$0$2f$node_modules$2f$date$2d$fns$2f$subMonths$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["subMonths"])(now, 1));
+  100 const lastMonthEnd = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$date$2d$fns$40$4$2e$4$2e$0$2f$node_modules$2f$date$2d$fns$2f$endOfMonth$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["endOfMonth"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$date$2d$fns$40$4$2e$4$2e$0$2f$node_modules$2f$date$2d$fns$2f$subMonths$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["subMonths"])(now, 1));
+  101 // 1. Clientes Ativos
+→ 102 const clientCount = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].client.count(
+Can't reach database server at `dummy:3306`
+
+Please make sure your database server is running at `dummy:3306`.
+    at <unknown> (src/app/actions/dashboard.ts:17:45)
+    at async getDashboardStats (src/app/actions/dashboard.ts:17:29)
+    at async DashboardPage (src/app/(dashboard)/dashboard/page.tsx:26:45)
+  15 |
+  16 |         // 1. Clientes Ativos
+> 17 |         const clientCount = await db.client.count()
+     |                                             ^
+  18 |         const lastMonthClientCount = await db.client.count({
+  19 |             where: { createdAt: { lt: currentMonthStart } }
+  20 |         }) {
+  clientVersion: '5.22.0',
+  errorCode: undefined
+}
+Error fetching recent activities: Error [PrismaClientInitializationError]:
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].serviceorder.findMany()` invocation in
+/app/.next/dev/server/chunks/ssr/[root-of-the-server]__0b7b5ee6._.js:178:145
+
+  175 try {
+  176     // Fetch different types of activities and combine them
+  177     const [orders, fuel, maintenance, payments] = await Promise.all([
+→ 178         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].serviceorder.findMany(
+Can't reach database server at `dummy:3306`
+
+Please make sure your database server is running at `dummy:3306`.
+    at <unknown> (src/app/actions/dashboard.ts:83:29)
+    at async getRecentActivities (src/app/actions/dashboard.ts:82:55)
+    at async DashboardPage (src/app/(dashboard)/dashboard/page.tsx:26:45)
+  81 |         // Fetch different types of activities and combine them
+  82 |         const [orders, fuel, maintenance, payments] = await Promise.all([
+> 83 |             db.serviceorder.findMany({
+     |                             ^
+  84 |                 take: 5,
+  85 |                 orderBy: { updatedAt: "desc" },
+  86 |                 include: { client: true } {
+  clientVersion: '5.22.0',
+  errorCode: undefined
+}
+Error fetching upcoming agenda: Error [PrismaClientInitializationError]:
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].serviceorder.findMany()` invocation in
+/app/.next/dev/server/chunks/ssr/[root-of-the-server]__0b7b5ee6._.js:1201:169
+
+  1198 try {
+  1199     const startDate = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$date$2d$fns$40$4$2e$4$2e$0$2f$node_modules$2f$date$2d$fns$2f$startOfDay$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["startOfDay"])(new Date());
+  1200     const endDate = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$date$2d$fns$40$4$2e$4$2e$0$2f$node_modules$2f$date$2d$fns$2f$endOfDay$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["endOfDay"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$date$2d$fns$40$4$2e$4$2e$0$2f$node_modules$2f$date$2d$fns$2f$addDays$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["addDays"])(new Date(), 7));
+→ 1201     const serviceOrders = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].serviceorder.findMany(
+Can't reach database server at `dummy:3306`
+
+Please make sure your database server is running at `dummy:3306`.
+    at <unknown> (src/app/actions/agenda.ts:11:53)
+    at async getUpcomingAgenda (src/app/actions/agenda.ts:11:31)
+    at async DashboardPage (src/app/(dashboard)/dashboard/page.tsx:40:59)
+   9 |         const endDate = endOfDay(addDays(new Date(), 7))
+  10 |
+> 11 |         const serviceOrders = await db.serviceorder.findMany({
+     |                                                     ^
+  12 |             where: {
+  13 |                 OR: [
+  14 |                     { scheduledDate: { gte: startDate, lte: endDate } }, {
+  clientVersion: '5.22.0',
+  errorCode: undefined
+}
+Error fetching next OS weather: Error [PrismaClientInitializationError]:
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].serviceorder.findFirst()` invocation in
+/app/.next/dev/server/chunks/ssr/[root-of-the-server]__0b7b5ee6._.js:263:162
+
+  260 async function getNextServiceOrderWeather() {
+  261     try {
+  262         // Find next scheduled service order from today onwards
+→ 263         const nextOs = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].serviceorder.findFirst(
+Can't reach database server at `dummy:3306`
+
+Please make sure your database server is running at `dummy:3306`.
+    at <unknown> (src/app/actions/dashboard.ts:160:46)
+    at async getNextServiceOrderWeather (src/app/actions/dashboard.ts:160:24)
+    at async DashboardPage (src/app/(dashboard)/dashboard/page.tsx:40:59)
+  158 |     try {
+  159 |         // Find next scheduled service order from today onwards
+> 160 |         const nextOs = await db.serviceorder.findFirst({
+      |                                              ^
+  161 |             where: {
+  162 |                 status: serviceorder_status.SCHEDULED,
+  163 |                 scheduledDate: { {
+  clientVersion: '5.22.0',
+  errorCode: undefined
+}
+Error fetching monthly performance: Error [PrismaClientInitializationError]:
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].payment.aggregate()` invocation in
+/app/.next/dev/server/chunks/ssr/[root-of-the-server]__0b7b5ee6._.js:560:162
+
+  557     };
+  558 }).reverse();
+  559 const performanceData = await Promise.all(last6Months.map(async (month)=>{
+→ 560     const revenue = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].payment.aggregate(
+Can't reach database server at `dummy:3306`
+
+Please make sure your database server is running at `dummy:3306`.
+    at <unknown> (src/app/actions/financial.ts:137:46)
+    at async (src/app/actions/financial.ts:137:29)
+    at async getMonthlyPerformance (src/app/actions/financial.ts:136:33)
+    at async DashboardPage (src/app/(dashboard)/dashboard/page.tsx:40:59)
+  135 |
+  136 |         const performanceData = await Promise.all(last6Months.map(async (month) => {
+> 137 |             const revenue = await db.payment.aggregate({
+      |                                              ^
+  138 |                 where: {
+  139 |                     type: "INCOME",
+  140 |                     date: { gte: month.start, lte: month.end } {
+  clientVersion: '5.22.0',
+  errorCode: undefined
+}
+ GET /dashboard 200 in 11.2s (compile: 9.9s, proxy.ts: 116ms, render: 1210ms)
+ GET /api/auth/session 200 in 3.3s (compile: 3.2s, render: 58ms)
