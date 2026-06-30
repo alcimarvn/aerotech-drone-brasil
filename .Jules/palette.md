@@ -1,0 +1,3 @@
+## 2026-06-30 - Footer Accessibility Improvements
+**Learning:** When dealing with dark themed components that have multiple interactive elements like social links and newsletter forms, setting explicit `focus-visible` utility classes with dark offsets is crucial for keyboard navigation. Additionally, when using icons in arrays for iteration, adding a `name` property to the array items allows for dynamic generation of descriptive `aria-label`s for each element.
+**Action:** Applied `aria-label` and `focus-visible` utility classes with `ring-offset-[#05110d]` to icon-only links and form inputs in the dark themed Footer.
