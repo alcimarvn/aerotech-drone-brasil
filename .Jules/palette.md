@@ -1,0 +1,4 @@
+## 2024-07-04 - Missing ARIA Labels on Icon-only Elements and Missing Visible Form Labels
+**Learning:** Found a systemic pattern where icon-only interactive elements (such as social links, form submit buttons, mobile menu triggers) were missing `aria-label`s, and purely decorative SVG icons within these elements were missing `aria-hidden="true"`. Further, structural form inputs like the newsletter field had placeholder text, but were lacking an explicitly linked accessible `<label>`.
+
+**Action:** Consistently ensure that all new map-generated social links include a descriptive string property (like `name`) bound dynamically to the `aria-label` attribute, add `.sr-only` labels linked to the input's `id` for inputs lacking visible labeling, provide explicit `aria-label`s for icon-only submit/trigger buttons, and apply `aria-hidden="true"` on their respective `<icon>` primitives to prevent redundant announcements for screen readers.
