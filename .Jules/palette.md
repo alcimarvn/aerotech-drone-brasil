@@ -1,0 +1,3 @@
+## 2024-07-05 - Accessible Icon-Only Links and Buttons
+**Learning:** Icon-only interactive elements (like social media links or hamburger menus) often lack accessible names for screen readers. Using just an `icon` property without an explicit `name` in mapping functions prevents dynamic `aria-label` generation.
+**Action:** When rendering arrays of icon-only links/buttons, ensure each object has a `name` property to populate `aria-label`. Add `aria-hidden="true"` to the decorative icon component itself, and provide explicit `focus-visible` styles with sufficient contrast for keyboard navigation.
