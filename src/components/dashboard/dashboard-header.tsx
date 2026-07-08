@@ -25,28 +25,33 @@ export function DashboardHeader() {
 
             <div className="flex items-center gap-4">
                 <div className="relative hidden md:block">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" aria-hidden="true" />
                     <input
                         type="text"
                         placeholder="Buscar..."
+                        aria-label="Buscar..."
                         className="pl-10 pr-4 py-2 bg-slate-100 border-transparent rounded-lg text-sm focus:bg-white focus:border-slate-200 transition-all outline-none w-64"
                     />
                 </div>
 
-                <Button variant="ghost" size="icon" className="relative text-slate-500">
-                    <Bell className="w-5 h-5" />
-                    <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+                <Button variant="ghost" size="icon" className="relative text-slate-500" aria-label="Notificações">
+                    <Bell className="w-5 h-5" aria-hidden="true" />
+                    <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" aria-hidden="true" />
                 </Button>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="flex items-center gap-2 pl-2">
-                            <Avatar className="w-8 h-8">
+                        <Button
+                            variant="ghost"
+                            className="flex items-center gap-2 pl-2"
+                            aria-label={`Menu do usuário ${session?.user?.name || 'Usuário'}`}
+                        >
+                            <Avatar className="w-8 h-8" aria-hidden="true">
                                 <AvatarFallback className="bg-primary/10 text-primary">
-                                    {session?.user?.name?.charAt(0) || <User className="w-4 h-4" />}
+                                    {session?.user?.name?.charAt(0) || <User className="w-4 h-4" aria-hidden="true" />}
                                 </AvatarFallback>
                             </Avatar>
-                            <div className="text-left hidden lg:block">
+                            <div className="text-left hidden lg:block" aria-hidden="true">
                                 <p className="text-sm font-medium leading-none">{session?.user?.name || "Usuário"}</p>
                                 <p className="text-xs text-slate-500">{session?.user?.role || "Operador"}</p>
                             </div>
