@@ -1,0 +1,3 @@
+## 2024-07-10 - ARIA Labels and tooltips for collapsible Sidebar
+**Learning:** Collapsed sidebars should replace visual text elements with `sr-only` alternatives instead of unmounting them, ensuring screen reader context is maintained. Decorative icons must have `aria-hidden="true"`, and the collapse trigger button itself should have explicit `aria-label` and `aria-expanded` state. Explicit `focus-visible` classes are important for keyboard navigation when links are reduced to icon buttons.
+**Action:** Always prefer `sr-only` to conditional rendering for collapsible accessible navigation text. Bind `title` attributes for sighted users on icon-only links to explain the button's action dynamically.
