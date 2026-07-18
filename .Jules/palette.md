@@ -1,0 +1,4 @@
+## 2024-07-18 - Footer Keyboard Accessibility and ARIA
+**Learning:** For dynamic mapped icon-only links or inputs rendered over dark backgrounds, the default browser focus ring might be too low contrast, and screen readers will announce generic link text or empty names unless specifically labeled. In the newsletter form, even if the button has a distinct purpose contextually to the email field, it still needs an explicit `aria-label` or `<label>` attached since screen-readers might land directly on it.
+
+**Action:** Whenever mapping social links using arrays, always include an explicit `name` attribute in the data object to dynamically provide `aria-label`s for the map outputs. Also, ensure a `sr-only` label is given to contextless inputs and that decorative icons get `aria-hidden="true"`. Apply `focus-visible:ring` explicitly to make keyboard navigation clearly visible over both dark and light backgrounds.
