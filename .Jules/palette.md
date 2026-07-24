@@ -1,0 +1,3 @@
+## 2024-07-24 - Accessibility on Responsive Headers
+**Learning:** Found an accessibility issue pattern in Next.js apps with responsive design. Elements that are hidden on desktop but appear on mobile screens (like hamburger menus nested in md:hidden containers) often lack accessible names because they are purely icon-based.
+**Action:** When adding accessible names to responsive navigation elements, always ensure `aria-label` or `sr-only` text is included dynamically or statically to serve screen readers, regardless of the element's CSS visibility rules on larger viewports.
