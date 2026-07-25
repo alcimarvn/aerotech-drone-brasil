@@ -1,0 +1,3 @@
+## 2025-03-05 - Dynamic ARIA Labels in Mapped Elements & sr-only labels
+**Learning:** When generating interactive elements (like icon-only buttons or links) via array `.map()` functions, adding a `name` property to the source array objects is an effective pattern. It allows dynamically generating descriptive `aria-label`s without repetitive conditional logic. Additionally, explicitly associating visually hidden `<label>` elements with form inputs using `sr-only` and `htmlFor` improves screen reader compatibility over `aria-label` on inputs for certain setups.
+**Action:** Always include descriptive textual properties in mapped array sources when rendering icon-only UI patterns, and utilize explicit visually hidden labels for standalone form inputs.
