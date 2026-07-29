@@ -1,0 +1,3 @@
+## 2024-05-30 - Accessible Icon Links via Array Mapping
+**Learning:** When rendering multiple icon-only links (like social media icons) by mapping over an array, they often lack accessible names for screen readers, leading to poor accessibility.
+**Action:** Always include a descriptive `name` property in the array objects (e.g., `{ icon: Instagram, href: "...", name: "Instagram" }`) and use it to dynamically generate a meaningful `aria-label` (e.g., `aria-label={\`Visitar \${item.name}\`}`) on the interactive element. Don't forget to hide the decorative SVGs from screen readers using `aria-hidden="true"`.
