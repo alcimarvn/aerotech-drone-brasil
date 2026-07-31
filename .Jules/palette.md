@@ -1,0 +1,3 @@
+## 2024-07-31 - Preserving Accessible Names in Collapsible UI
+**Learning:** When building collapsible UI elements like sidebars that reduce navigation items to icon-only buttons, conditionally unmounting the text removes the accessible name for screen readers, making the buttons completely inaccessible.
+**Action:** Instead of unmounting the text (e.g., `{!isCollapsed && <span>...</span>}`), use a conditionally applied `sr-only` class (e.g., `<span className={cn(isCollapsed && "sr-only")}>`) to visually hide the text while preserving the accessible name for screen readers. Add `aria-hidden="true"` to decorative icons to prevent redundant announcements.
