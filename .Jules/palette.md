@@ -1,0 +1,3 @@
+## 2024-08-04 - Dynamic ARIA labels for array-mapped icon-only links
+**Learning:** When using Radix UI or mapping over objects to render icon-only links (e.g., social media footers), a common pattern is to just store the icon component and the URL. However, this causes accessibility issues because the links lack text for screen readers.
+**Action:** Always ensure mapped array elements include a descriptive `name` property. This allows for dynamic and localizable `aria-label` generation in the loop (e.g., `aria-label={\`Acessar nosso \${social.name}\`}`). Additionally, add explicit `focus-visible` ring utilities to ensure the focused item is identifiable for keyboard users, particularly on dark backgrounds, and hide the decorative SVG with `aria-hidden="true"`.
