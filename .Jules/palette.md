@@ -1,0 +1,3 @@
+## 2026-08-05 - Array Mapping and Dynamic ARIA Labels
+**Learning:** When rendering a list of icon-only links or buttons using `Array.prototype.map` (e.g., social media icons), the source array often only contains an icon component and a URL. This makes it impossible to provide a unique, descriptive `aria-label` for each item without refactoring the array structure.
+**Action:** Always ensure the data structure being mapped over includes a descriptive property (like `name`) so that you can dynamically generate accurate accessible names (e.g., `aria-label={\`Visitar nosso perfil no ${social.name}\`}`) within the map function.
