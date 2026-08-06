@@ -1,0 +1,3 @@
+## 2024-08-06 - Collapsible Sidebar Accessibility
+**Learning:** Conditionally unmounting text from sidebar navigation items when collapsed removes their accessible name, causing screen readers to only announce the decorative icon (which is unhelpful) or fail to announce anything meaningful for standard links and buttons.
+**Action:** Instead of unmounting the text (e.g. `{!isCollapsed && <span>text</span>}`), always render the text element and conditionally apply the `sr-only` class when collapsed. Additionally, add `aria-hidden="true"` to the decorative icons to prevent redundant announcements, and use the `title` attribute for native tooltips on hover for sighted users.
