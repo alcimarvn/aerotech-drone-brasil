@@ -1,0 +1,3 @@
+## 2026-08-09 - Dark Theme Icon-Only Buttons Accessibility
+**Learning:** When mapping arrays to render icon-only buttons or links, dynamically including a descriptive 'name' property allows for generation of precise 'aria-label' attributes. Additionally, default browser focus rings lack contrast on dark backgrounds, making explicit 'focus-visible' utility classes with 'ring-offset' necessary for keyboard navigation accessibility.
+**Action:** Always verify that mapped interactive elements possess a textual equivalent within the data structure to construct an 'aria-label', set 'aria-hidden="true"' on the decorative SVGs, and apply explicit dark-theme focus states.
