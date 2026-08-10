@@ -45,6 +45,7 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                 {isMinimized ? (
                     // MINIMIZED STATE: Small Floating Circle
                     <button
+                        aria-label="Expandir consultoria"
                         onClick={() => setIsMinimized(false)}
                         className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min"
                     >
@@ -66,6 +67,7 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                     <div className="relative bg-[#0f231d]/95 backdrop-blur-2xl border border-white/10 p-6 rounded-[2rem] shadow-2xl flex flex-col gap-4 max-w-[280px] animate-pulse-slow">
                         {/* Close/Minimize Button */}
                         <button
+                            aria-label="Recolher consultoria"
                             onClick={() => setIsMinimized(true)}
                             className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1"
                             title="Recolher"

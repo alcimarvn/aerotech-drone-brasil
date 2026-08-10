@@ -71,6 +71,7 @@ export function LiveNotifications() {
                 </Link>
 
                 <button
+                    aria-label="Fechar notificação"
                     onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
