@@ -138,7 +138,7 @@ export function Header() {
                     <div className="md:hidden">
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button variant="ghost" size="icon" className={cn(
+                                <Button aria-label="Abrir menu de navegação" variant="ghost" size="icon" className={cn(
                                     "rounded-xl transition-all active:scale-90",
                                     scrolled ? "text-slate-800 hover:bg-slate-100" : "text-white hover:bg-white/10"
                                 )}>
