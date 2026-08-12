@@ -1,0 +1,3 @@
+## 2024-08-12 - Accessible Stateful Floating CTAs
+**Learning:** When creating interactive floating CTAs that minimize or expand, it is important to add `aria-expanded` and explicit `aria-label`s to accurately convey state to screen readers. Furthermore, adding `aria-hidden="true"` to purely decorative SVGs and notification badges avoids redundant announcements. Explicit `focus-visible` classes with suitable contrast against the background ensure keyboard navigation remains functional and visible.
+**Action:** Consistently apply `aria-expanded`, dynamic `aria-label`s, `focus-visible` states, and `aria-hidden` to state-dependent floating or minimizing UI components in future implementations.

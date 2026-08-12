@@ -46,12 +46,14 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                     // MINIMIZED STATE: Small Floating Circle
                     <button
                         onClick={() => setIsMinimized(false)}
-                        className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min"
+                        className="relative bg-[#0f231d] border border-white/10 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all animate-pulse-slow group/min focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f231d]"
+                        aria-label="Abrir consultoria"
+                        aria-expanded="false"
                     >
-                        <WhatsAppIcon className="w-7 h-7" />
+                        <WhatsAppIcon className="w-7 h-7" aria-hidden="true" />
 
                         {/* Persistent Notification Badge */}
-                        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center">
+                        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center" aria-hidden="true">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 text-[8px] font-bold text-white items-center justify-center">1</span>
                         </span>
@@ -67,17 +69,19 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
                         {/* Close/Minimize Button */}
                         <button
                             onClick={() => setIsMinimized(true)}
-                            className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1"
+                            className="absolute top-4 right-4 text-white/20 hover:text-white transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f231d]"
                             title="Recolher"
+                            aria-label="Recolher consultoria"
+                            aria-expanded="true"
                         >
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
 
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-                                <Sparkles className="w-5 h-5 text-emerald-500" />
+                                <Sparkles className="w-5 h-5 text-emerald-500" aria-hidden="true" />
                             </div>
                             <div>
                                 <p className="text-white text-sm font-bold tracking-tight">Consultoria Gratuita</p>
@@ -91,13 +95,13 @@ export function FloatingCTA({ whatsappLink }: FloatingCTAProps) {
 
                         <Link
                             href={whatsappLink}
-                            className="flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-black text-sm transition-all hover:scale-105 active:scale-95 shadow-[0_10px_20px_-5px_rgba(5,150,105,0.4)] group/btn relative"
+                            className="flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-black text-sm transition-all hover:scale-105 active:scale-95 shadow-[0_10px_20px_-5px_rgba(5,150,105,0.4)] group/btn relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f231d]"
                         >
-                            <WhatsAppIcon className="w-4 h-4" />
+                            <WhatsAppIcon className="w-4 h-4" aria-hidden="true" />
                             FALAR NO WHATSAPP
-                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
 
-                            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center">
+                            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center" aria-hidden="true">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500 text-[8px] font-bold text-white items-center justify-center">1</span>
                             </span>
