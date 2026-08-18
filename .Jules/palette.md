@@ -1,0 +1,3 @@
+## 2026-08-18 - Footer Form & Link Accessibility
+**Learning:** Found a common pattern in the footer where icon-only links lacked accessible names (ARIA labels) and form inputs (newsletter) lacked explicitly linked visible or visually hidden labels for screen readers. Decorative icons inside interactive elements were also not hidden from screen readers.
+**Action:** Always map objects with a descriptive `name` property to generate dynamic `aria-label`s for icon links, use `sr-only` classes on explicit `<label>`s for inputs without visible labels, hide decorative SVGs with `aria-hidden="true"`, and ensure distinct `focus-visible` utility classes are applied for keyboard accessibility.
