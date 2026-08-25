@@ -1,0 +1,5 @@
+## 2024-05-15 - Enhancing Icon-Only Button Accessibility
+
+**Learning:** When mapping over objects to render icon-only links (like social media links), dynamically generating `aria-label` properties ensures screen readers correctly identify each interactive element. Hiding the internal decorative SVGs with `aria-hidden="true"` prevents redundant announcements. Additionally, explicitly defining focus rings with appropriate offset colors (e.g., `focus-visible:ring-offset-[#0a1a15]`) is critical for keyboard accessibility in dark-themed environments where default browser focus indicators may lack contrast.
+
+**Action:** Always provide a `name` or description in data mappings for icon-only components, bind this to `aria-label`, hide decorative sub-elements, and test keyboard focus indicators against the specific background color context.
