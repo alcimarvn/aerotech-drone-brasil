@@ -56,8 +56,11 @@ export function Sidebar() {
                     size="icon"
                     onClick={() => setIsCollapsed(!isCollapsed)}
                     className="text-slate-400 hover:text-white hover:bg-slate-800"
+                    aria-label={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                    aria-expanded={!isCollapsed}
+                    title={isCollapsed ? "Expandir menu" : "Recolher menu"}
                 >
-                    {isCollapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+                    {isCollapsed ? <Menu className="w-5 h-5" aria-hidden="true" /> : <ChevronLeft className="w-5 h-5" aria-hidden="true" />}
                 </Button>
             </div>
 
@@ -68,6 +71,7 @@ export function Sidebar() {
                         <Link
                             key={item.href}
                             href={item.href}
+                            title={isCollapsed ? item.label : undefined}
                             className={cn(
                                 "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors group",
                                 isActive
@@ -75,8 +79,8 @@ export function Sidebar() {
                                     : "text-slate-400 hover:text-white hover:bg-slate-800"
                             )}
                         >
-                            <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} />
-                            {!isCollapsed && <span className="font-medium">{item.label}</span>}
+                            <item.icon aria-hidden="true" className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} />
+                            <span className={cn("font-medium", isCollapsed && "sr-only")}>{item.label}</span>
                         </Link>
                     )
                 })}
@@ -85,20 +89,22 @@ export function Sidebar() {
             <div className="p-4 border-t border-slate-800">
                 <Link
                     href="/dashboard/settings"
+                    title={isCollapsed ? "Configurações" : undefined}
                     className={cn(
                         "flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors mb-2",
                         pathname === "/dashboard/settings" && "bg-slate-800 text-white"
                     )}
                 >
-                    <Settings className="w-5 h-5 shrink-0" />
-                    {!isCollapsed && <span className="font-medium">Configurações</span>}
+                    <Settings aria-hidden="true" className="w-5 h-5 shrink-0" />
+                    <span className={cn("font-medium", isCollapsed && "sr-only")}>Configurações</span>
                 </Link>
                 <button
                     onClick={() => signOut({ callbackUrl: "/" })}
+                    title={isCollapsed ? "Sair" : undefined}
                     className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors"
                 >
-                    <LogOut className="w-5 h-5 shrink-0" />
-                    {!isCollapsed && <span className="font-medium">Sair</span>}
+                    <LogOut aria-hidden="true" className="w-5 h-5 shrink-0" />
+                    <span className={cn("font-medium", isCollapsed && "sr-only")}>Sair</span>
                 </button>
             </div>
         </aside>
