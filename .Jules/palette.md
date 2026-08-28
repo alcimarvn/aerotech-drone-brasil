@@ -1,0 +1,3 @@
+## 2024-08-28 - Collapsible UI Text Elements
+**Learning:** Conditionally unmounting text in collapsible UI components (e.g. sidebars or menus turning into icon-only buttons) completely removes the accessible name for screen readers, leading to poor navigation context.
+**Action:** Instead of unmounting (`{!isCollapsed && <span>Text</span>}`), use Tailwind's `sr-only` class conditionally (`<span className={cn(isCollapsed && "sr-only")}>Text</span>`) to preserve the text for screen readers. Additionally, dynamically bind a visual tooltip (`title` attribute) to compensate for the lost visual label when collapsed.
