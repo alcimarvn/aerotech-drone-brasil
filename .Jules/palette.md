@@ -1,0 +1,3 @@
+## 2024-05-17 - Acessibilidade no Rodapé
+**Learning:** Elementos decorativos (como ícones sociais e setas de botões) sem aria-hidden prejudicam a leitura de tela, pois o leitor anuncia a tag SVG desnecessariamente. Inputs soltos sem label associado, mesmo com placeholder, violam a acessibilidade. Links que contém apenas ícones precisam de aria-label claro.
+**Action:** Ao construir formulários e botões com ícones, assegurar o uso de `sr-only` para labels visivelmente ausentes, `aria-label` para links compostos apenas por ícones, `aria-hidden="true"` para ícones decorativos e classes `focus-visible` explícitas para garantir feedback de navegação por teclado.
