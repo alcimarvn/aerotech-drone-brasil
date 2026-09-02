@@ -1,0 +1,3 @@
+## 2024-05-15 - Collapsible Sidebar Accessibility
+**Learning:** When building collapsible sidebars, unmounting text (e.g., `{!isCollapsed && <span>Text</span>}`) removes the accessible name for screen readers when collapsed. Additionally, decorative icons need `aria-hidden="true"` to prevent redundant announcements, and custom focus rings must be tailored for dark backgrounds.
+**Action:** Use conditional `sr-only` classes (`<span className={cn(isCollapsed && "sr-only")}>Text</span>`) instead of unmounting text. Always include `aria-expanded` on toggle buttons, add `title` for visible tooltips when collapsed, set `aria-hidden="true"` on icons, and apply explicit dark-mode contrast focus rings (e.g., `focus-visible:ring-offset-slate-900`).
