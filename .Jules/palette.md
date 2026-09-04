@@ -1,0 +1,3 @@
+## 2024-09-04 - Dynamic ARIA labels and dark theme focus rings on icon-only links
+**Learning:** When using map functions to render decorative social links or icons, dynamically adding an accessible name via `aria-label` and `title` (tied to a new `name` property) prevents accessibility violations. Additionally, using explicit contrast-aware focus styles (`focus-visible:ring-offset-[#0a1a15]`) instead of defaults ensures proper keyboard navigation visibility on dark theme backgrounds.
+**Action:** When creating icon-only iterative mapping, always ensure an accessible `name` parameter exists in the mapping configuration to cleanly bind to `aria-label`, `title`, and add appropriate dark-themed focus offset explicitly matching the parent container color.
