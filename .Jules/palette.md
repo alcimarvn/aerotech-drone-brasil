@@ -1,0 +1,4 @@
+## 2023-10-27 - Sidebar Keyboard Navigation & Accessible Names
+
+**Learning:** When creating collapsible sidebars or navigation menus, simply unmounting the visible text with `{!isCollapsed && <span>...</span>}` entirely removes the accessible name for screen readers when the menu is collapsed. Also, interactive Radix primitives and links need explicit focus rings using `focus-visible` (e.g. `focus-visible:ring-emerald-500`) when browser defaults don't provide adequate contrast against dark themes.
+**Action:** Instead of unmounting the text, use Tailwind's `sr-only` class (`<span className={cn(isCollapsed && "sr-only")}>`) to preserve the text for screen readers while hiding it visually. Always add `aria-hidden="true"` to decorative icons (like Lucide icons) to avoid redundant announcements, and include a `title` attribute for visual tooltips for sighted users. Ensure `aria-expanded` and `aria-label` are toggled correctly on stateful expand/collapse buttons.
