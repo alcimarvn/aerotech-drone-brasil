@@ -1,0 +1,3 @@
+## 2023-11-20 - Dark Theme Focus Rings & Icon Links
+**Learning:** Default browser focus rings often lack sufficient contrast against dark backgrounds like the #0a1a15 used in the footer. Also, mapping over arrays for icon-only links needs dynamic naming to avoid repetitive or missing ARIA labels.
+**Action:** Always provide explicit, high-contrast focus rings using ring offset utilities (e.g., focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1a15]) on dark backgrounds. Ensure mapped icon links include a descriptive name property to generate dynamic aria-label and title attributes, and apply aria-hidden='true' to the icons themselves.
