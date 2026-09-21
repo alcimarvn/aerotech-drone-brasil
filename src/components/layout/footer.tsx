@@ -42,16 +42,18 @@ export function Footer() {
 
                         <div className="flex gap-4">
                             {[
-                                { icon: Instagram, href: "https://instagram.com/aerotechdronesbrasil" },
-                                { icon: Linkedin, href: "#" },
-                                { icon: Facebook, href: "#" }
+                                { name: "Instagram", icon: Instagram, href: "https://instagram.com/aerotechdronesbrasil" },
+                                { name: "LinkedIn", icon: Linkedin, href: "#" },
+                                { name: "Facebook", icon: Facebook, href: "#" }
                             ].map((social, i) => (
                                 <Link
                                     key={i}
                                     href={social.href}
-                                    className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400 transition-all duration-300 hover:-translate-y-1 group"
+                                    aria-label={social.name}
+                                    title={social.name}
+                                    className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400 transition-all duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1a15] group"
                                 >
-                                    <social.icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+                                    <social.icon aria-hidden="true" className="w-5 h-5 transition-transform group-hover:scale-110" />
                                 </Link>
                             ))}
                         </div>
