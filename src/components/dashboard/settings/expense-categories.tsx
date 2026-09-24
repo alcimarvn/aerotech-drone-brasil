@@ -119,8 +119,15 @@ export function ExpenseCategories({ categories: initialCategories }: ExpenseCate
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" size="icon" disabled={isCreating} className="bg-emerald-600 hover:bg-emerald-700 text-white shrink-0">
-                            {isCreating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
+                        <Button
+                            type="submit"
+                            size="icon"
+                            disabled={isCreating}
+                            className="bg-emerald-600 hover:bg-emerald-700 text-white shrink-0 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1 outline-none"
+                            aria-label="Adicionar categoria"
+                            title="Adicionar categoria"
+                        >
+                            {isCreating ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Plus className="h-4 w-4" aria-hidden="true" />}
                         </Button>
                     </form>
                 </Form>
@@ -152,10 +159,11 @@ export function ExpenseCategories({ categories: initialCategories }: ExpenseCate
                                         size="icon"
                                         onClick={() => handleDelete(category.id)}
                                         disabled={category._count.expense > 0}
-                                        className="h-8 w-8 text-slate-400 hover:text-red-600 hover:bg-red-50"
+                                        className="h-8 w-8 text-slate-400 hover:text-red-600 hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-1 outline-none"
                                         title={category._count.expense > 0 ? "Em uso, não pode excluir" : "Excluir"}
+                                        aria-label={category._count.expense > 0 ? "Em uso, não pode excluir" : `Excluir categoria ${category.name}`}
                                     >
-                                        <Trash2 className="w-4 h-4" />
+                                        <Trash2 className="w-4 h-4" aria-hidden="true" />
                                     </Button>
                                 </TableCell>
                             </TableRow>
