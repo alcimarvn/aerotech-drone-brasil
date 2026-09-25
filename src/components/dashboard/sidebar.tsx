@@ -56,8 +56,11 @@ export function Sidebar() {
                     size="icon"
                     onClick={() => setIsCollapsed(!isCollapsed)}
                     className="text-slate-400 hover:text-white hover:bg-slate-800"
+                    aria-expanded={!isCollapsed}
+                    aria-label={isCollapsed ? "Expandir menu" : "Recolher menu"}
+                    title={isCollapsed ? "Expandir menu" : "Recolher menu"}
                 >
-                    {isCollapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+                    {isCollapsed ? <Menu className="w-5 h-5" aria-hidden="true" /> : <ChevronLeft className="w-5 h-5" aria-hidden="true" />}
                 </Button>
             </div>
 
@@ -74,9 +77,10 @@ export function Sidebar() {
                                     ? "bg-primary text-white"
                                     : "text-slate-400 hover:text-white hover:bg-slate-800"
                             )}
+                            title={isCollapsed ? item.label : undefined}
                         >
-                            <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} />
-                            {!isCollapsed && <span className="font-medium">{item.label}</span>}
+                            <item.icon className={cn("w-5 h-5 shrink-0", isActive ? "text-white" : "group-hover:text-primary")} aria-hidden="true" />
+                            <span className={cn("font-medium", isCollapsed && "sr-only")}>{item.label}</span>
                         </Link>
                     )
                 })}
@@ -89,16 +93,18 @@ export function Sidebar() {
                         "flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors mb-2",
                         pathname === "/dashboard/settings" && "bg-slate-800 text-white"
                     )}
+                    title={isCollapsed ? "Configurações" : undefined}
                 >
-                    <Settings className="w-5 h-5 shrink-0" />
-                    {!isCollapsed && <span className="font-medium">Configurações</span>}
+                    <Settings className="w-5 h-5 shrink-0" aria-hidden="true" />
+                    <span className={cn("font-medium", isCollapsed && "sr-only")}>Configurações</span>
                 </Link>
                 <button
                     onClick={() => signOut({ callbackUrl: "/" })}
                     className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-400/10 transition-colors"
+                    title={isCollapsed ? "Sair" : undefined}
                 >
-                    <LogOut className="w-5 h-5 shrink-0" />
-                    {!isCollapsed && <span className="font-medium">Sair</span>}
+                    <LogOut className="w-5 h-5 shrink-0" aria-hidden="true" />
+                    <span className={cn("font-medium", isCollapsed && "sr-only")}>Sair</span>
                 </button>
             </div>
         </aside>
