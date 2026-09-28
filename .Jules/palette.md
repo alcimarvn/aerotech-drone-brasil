@@ -1,0 +1,3 @@
+## 2026-09-28 - Newsletter & Social Links Accessibility
+**Learning:** Radix/Tailwind components often miss dynamic ARIA labels for icon-only maps and `sr-only` associations for inputs, especially on dark-themed footers where default browser focus is invisible. Decorative icons (like Lucide React) within interactive buttons need explicit `aria-hidden='true'` to avoid redundant screen reader announcements.
+**Action:** When adding accessible names to map functions, include a descriptive `name` property in the array to generate dynamic `aria-label`s. Use explicit dark-theme `focus-visible:ring` offsets, and always link visually hidden labels to inputs via `id`/`htmlFor`.
