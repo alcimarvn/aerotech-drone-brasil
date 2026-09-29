@@ -1,0 +1,3 @@
+## 2026-09-29 - Accessible Icon-only Social Links and Newsletter Form in Footer
+**Learning:** When mapping over arrays for icon-only links, adding a 'name' property allows dynamic generation of 'aria-label' and 'title', making it fully accessible and providing tooltips for sighted users. Additionally, explicit focus ring utility classes improve keyboard accessibility on dark-themed footers, and aria-hidden hides decorative SVGs.
+**Action:** Always include 'name' for dynamic list mappings of icon-only elements, apply aria-label, title, aria-hidden on children SVGs, and ensure robust focus-visible ring classes.
