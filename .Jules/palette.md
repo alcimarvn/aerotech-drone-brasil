@@ -1,0 +1,3 @@
+## 2024-10-01 - Icon-only Button and Link Accessibility
+**Learning:** Icon-only interactive elements like social media links or action buttons without visible text fail WCAG criteria if they lack an accessible name. They must have an `aria-label`, and ideally a `title` attribute for mouse users to have visible context on hover. Also, screen readers will redundantly announce the child SVG if it isn't hidden with `aria-hidden=\"true\"`.
+**Action:** Always provide an `aria-label` for icon-only buttons/links, use `aria-hidden=\"true\"` on purely decorative child SVGs, and include a `title` attribute when appropriate to aid sighted users with a tooltip. Additionally, explicitly style focus rings for keyboard users, especially on dark backgrounds.
