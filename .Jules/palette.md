@@ -1,0 +1,3 @@
+## 2024-10-27 - Accessible Dark-Themed Interactive Elements
+**Learning:** Default browser outlines often lack sufficient contrast against dark background gradients (like `#0a1a15` to `#050c0a`). Additionally, icon-only maps require an injected `name` property to generate unique, descriptive `aria-label`s dynamically.
+**Action:** When adding accessibility to dark-themed interactive elements, remove the default outline and apply explicit high-contrast focus rings using Tailwind (e.g., `outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1a15]`). Ensure mapped icon-only lists provide text data to prevent WCAG violations.
