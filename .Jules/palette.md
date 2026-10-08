@@ -1,0 +1,3 @@
+## 2026-10-08 - Accessible Icon-Only Elements in Mapped Arrays
+**Learning:** When mapping over arrays to render icon-only links or buttons (like social media icons), missing `aria-label` and `title` attributes make them inaccessible to screen readers and lack visual tooltips. Also, decorative inner SVGs need `aria-hidden="true"` to prevent redundant announcements.
+**Action:** Always include a descriptive `name` property in the array objects. Use this property to dynamically bind `aria-label` and `title` on the interactive element, apply explicit `focus-visible` utility classes for keyboard navigation, and hide the inner SVG with `aria-hidden="true"`.
