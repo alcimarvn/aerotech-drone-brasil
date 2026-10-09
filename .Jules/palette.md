@@ -1,0 +1,3 @@
+## 2024-05-18 - Missing Aria-Label and Labels in Layout Footer
+**Learning:** The footer of the app uses mapping to render social media links, but lacks explicit `aria-label` assignments. The `name` property wasn't defined in the social array for rendering accessible `<Link>` and visual tooltips via `title`. Furthermore, standard inputs in generic components may lack explicitly hidden `<label>`s.
+**Action:** Always add a `name` property to array objects used to render icon-only links so that a dynamic `aria-label` and `title` can be created. Additionally, attach visually hidden explicit `<label>`s for all form inputs using Tailwind's `sr-only` class instead of relying purely on `placeholder`.
