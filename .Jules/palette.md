@@ -1,0 +1,3 @@
+## 2024-10-12 - Accessible Icon Links and Form Elements in Footer
+**Learning:** Footer interactive elements like social links and newsletter forms often drop accessible names when relying purely on icons or visual context. Additionally, Radix or custom icon components (like `<Send />` or Lucide icons) need explicit `aria-hidden="true"` when their container provides the accessible name, preventing redundant or confusing announcements.
+**Action:** Always verify that `<Link>` or `<button>` wrapping icons have `aria-label` (and optionally `title` for visual tooltips), and ensure decorative child SVGs/icons have `aria-hidden="true"`.
