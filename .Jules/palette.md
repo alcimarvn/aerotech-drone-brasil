@@ -1,0 +1,3 @@
+## 2024-10-25 - Mapping array-based icon-only links
+**Learning:** When mapping an array of objects to generate interactive, icon-only links (like social media buttons), adding a text `name` property to each array object enables dynamically generating accessible labels (using `aria-label`) and visual tooltips (`title`) for each element, while setting `aria-hidden="true"` on the icon itself hides decorative content from screen readers.
+**Action:** Always include a textual `name` or `label` property in configuration arrays used for mapping over visual elements and ensure both `aria-label` and `title` are bound to this property, setting `aria-hidden` on the inner decorative elements.
