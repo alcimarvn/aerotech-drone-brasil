@@ -149,8 +149,14 @@ export function MissionCard({ id, videoSrc, title, location, droneModel, descrip
                                 <span className="text-[10px] font-bold tabular-nums">0.00</span>
                             </div>
                         </div>
-                        <button onClick={(e) => { e.stopPropagation(); toggleMute(e); }} className="hover:text-emerald-400 transition-colors bg-black/40 p-2 rounded-full backdrop-blur-md border border-white/10">
-                            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-emerald-500" />}
+                        <button
+                            onClick={(e) => { e.stopPropagation(); toggleMute(e); }}
+                            aria-label={isMuted ? "Ativar som do vídeo" : "Desativar som do vídeo"}
+                            title={isMuted ? "Ativar som do vídeo" : "Desativar som do vídeo"}
+                            aria-pressed={!isMuted}
+                            className="hover:text-emerald-400 transition-colors bg-black/40 p-2 rounded-full backdrop-blur-md border border-white/10 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1a15] outline-none"
+                        >
+                            {isMuted ? <VolumeX aria-hidden="true" className="w-4 h-4" /> : <Volume2 aria-hidden="true" className="w-4 h-4 text-emerald-500" />}
                         </button>
                     </div>
                 </div>
