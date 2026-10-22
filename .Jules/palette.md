@@ -1,0 +1,3 @@
+## 2023-10-22 - Missing ARIA Labels on Icon-only UI Elements
+**Learning:** Found that secondary top-bar elements like the notifications bell lacked accessible names, while inner decorative icons and purely visual badges (like red notification dots) were exposed to screen readers, causing unnecessary visual clutter for them.
+**Action:** Always add an `aria-label` and `title` to icon-only buttons for both a11y and tooltip functionality. Crucially, append `aria-hidden="true"` to both the icon SVG and any embedded decorative shapes (like notification dot `<span>`s) to explicitly hide them from the accessibility tree, making the screen reader experience cleaner.
