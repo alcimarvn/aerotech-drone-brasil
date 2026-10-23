@@ -1,0 +1,3 @@
+## 2024-10-23 - Preserve Accessible Names in Collapsible Components
+**Learning:** Conditionally unmounting text in collapsible components (like a sidebar) removes the accessible name for screen readers when collapsed, forcing reliance solely on icon `aria-labels` which can lead to redundancy or missing context.
+**Action:** Use Tailwind's `sr-only` utility class to visually hide the text while keeping it in the DOM, and add `aria-hidden="true"` to the decorative icons to ensure a clean, consistent experience for screen reader users. Additionally, dynamic `title` attributes provide visual tooltips on hover for sighted users when elements are icon-only.
