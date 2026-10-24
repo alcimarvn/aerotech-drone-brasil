@@ -1,0 +1,3 @@
+## 2024-10-24 - Dynamic accessible names for icon-only components in maps
+**Learning:** When using an array map to render dynamic icon-only links/buttons (e.g., social media icons), it's easy to miss accessible names since there's no visible text. We need to add a descriptive property (like `name`) to each array item specifically to serve as the dynamically bound `aria-label` and `title` to avoid WCAG violations.
+**Action:** When creating maps of icon-only elements, structurally include a string identifier for each item and bind it to the interactive element's accessible name and tooltip. Always apply `aria-hidden="true"` to the inner decorative icon component to prevent redundant screen reader announcements.
