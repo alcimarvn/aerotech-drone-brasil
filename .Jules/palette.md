@@ -1,0 +1,3 @@
+## 2024-05-24 - Accessible Interactive Elements in Footers
+**Learning:** Icon-only buttons and mapped social links in footers frequently lack accessible names (aria-label/title) and explicit focus states, which degrades keyboard and screen reader navigation. Newsletter forms often omit explicit labels (even sr-only ones).
+**Action:** When creating or mapping over icon-only interactive elements, ensure they receive `aria-label`, `title`, and explicit `focus-visible` styling (especially for dark backgrounds). Add visually hidden `<label>` elements linked via `id`/`htmlFor` for form inputs that rely solely on placeholders.
