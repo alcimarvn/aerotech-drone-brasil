@@ -1,0 +1,3 @@
+## 2024-10-28 - ARIA Labels and Tooltips for Icon-Only Arrays
+**Learning:** When mapping over an array to render icon-only interactive elements (like social media links), the elements lack accessible names. Adding a name property to the mapped objects allows for dynamic `aria-label` and `title` generation, ensuring both screen reader context and visual tooltips. Decorative SVGs inside these elements should be hidden with `aria-hidden="true"`.
+**Action:** Always verify that mapped arrays generating interactive components include text for accessible names, and apply `aria-hidden="true"` to pure decorative inner elements.
