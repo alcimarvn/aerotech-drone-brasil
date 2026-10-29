@@ -1,0 +1,3 @@
+## 2024-06-25 - Accessibility best practices for interactive elements
+**Learning:** Icon-only buttons and unlabelled inputs must have clear accessible names for screen-reader users, and these items should also be styled for explicit keyboard focus.
+**Action:** When working on interactive elements (e.g., links, inputs, and buttons) in footers or standard navigation arrays, ensure they receive `aria-label`, `title` (where visual context is helpful), `focus-visible` styling, and properly associated explicitly hidden labels via `id` and `htmlFor` for form inputs. Add `aria-hidden="true"` to purely decorative SVGs within those elements.
