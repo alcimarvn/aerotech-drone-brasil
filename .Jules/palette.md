@@ -1,0 +1,3 @@
+## 2025-03-01 - Footer Accessibility Improvements
+**Learning:** Icon-only interactive elements (links, buttons) without explicit accessible names or visible labels are inaccessible to screen readers, and standard browser focus outlines often lack contrast against dark backgrounds.
+**Action:** Always provide descriptive `aria-label` or `title` attributes for icon-only links, explicitly hide internal decorative SVGs from screen readers using `aria-hidden="true"`, and apply high-contrast `focus-visible` ring utility classes to ensure robust keyboard navigation support, especially in dark-themed UI components.
